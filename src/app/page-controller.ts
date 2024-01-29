@@ -1,6 +1,6 @@
 import { BaseComponent } from './components/base-component';
 import { header } from './components/header/header';
-import { FilmListPage } from './pages/film-list/film-list';
+import { MovieListPage } from './pages/movie-list';
 
 export class PageController extends BaseComponent {
   constructor() {
@@ -9,7 +9,7 @@ export class PageController extends BaseComponent {
         className: 'page-wrapper',
       },
       header(),
-      new BaseComponent({ tag: 'main', className: 'main' }, new FilmListPage()),
+      new BaseComponent({ tag: 'main', className: 'main' }, new MovieListPage()),
     );
   }
 }

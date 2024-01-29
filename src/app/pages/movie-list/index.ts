@@ -7,11 +7,11 @@ import type { FilmWithFavorite } from 'src/app/interfaces/film.interface';
 import type { PaginationOptions } from 'src/app/interfaces/pagination.interface';
 import { filmService } from 'src/app/services/film.service';
 
-import { filmCard } from './film-card/film-card';
-import { filmInfo } from './film-info';
-import styles from './film-list.module.scss';
+import { movieCard } from './movie-card';
+import { filmInfo } from './movie-info';
+import styles from './movie-list.module.scss';
 
-export class FilmListPage extends BaseComponent {
+export class MovieListPage extends BaseComponent {
   private loader: Loader;
   private paginationOptions: PaginationOptions = {
     page: 1,
@@ -42,7 +42,7 @@ export class FilmListPage extends BaseComponent {
   public async loadFilms() {
     const { data: films, hasMore } = await filmService.getFilms(this.paginationOptions);
     const filmList = films.map((film) =>
-      filmCard(film, () => {
+      movieCard(film, () => {
         this.showFilmModal(film);
       }),
     );
