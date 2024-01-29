@@ -20,6 +20,22 @@ class FilmService {
     });
   }
 
+  public async getFavoriteFilms({ page, limit }: PaginationOptions): Promise<PaginationResponse<FilmWithFavorite>> {
+    await wait(1000);
+    const favoriteMovies = this.getFavoriteMovies();
+    return import('../data/films.ts').then((module) => {
+      const films = module.films.filter((film) => favoriteMovies.includes(film.kinopoiskId.toString()));
+      return {
+        data: films.slice((page - 1) * limit, page * limit).map((film) => ({
+          ...film,
+          isFavorite: favoriteMovies.includes(film.kinopoiskId.toString()),
+        })),
+        total: films.length,
+        hasMore: page * limit < films.length,
+      };
+    });
+  }
+
   public getFilm(id: number) {
     return import('../data/films.ts').then((module) => module.films.find((film) => film.kinopoiskId === id));
   }

@@ -4,7 +4,7 @@ import { BaseComponent } from '../base-component';
 import { div } from '../utils/div';
 
 export class Loader extends BaseComponent {
-  private spinner = div({ className: 'loader' });
+  private spinner = div({});
 
   constructor() {
     super({ tag: 'div', className: 'grey-modal' });

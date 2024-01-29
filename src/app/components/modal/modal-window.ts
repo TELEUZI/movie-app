@@ -20,8 +20,7 @@ export class ModalWindow extends BaseComponent {
 
   constructor(config: IModalPopup) {
     super({ className: 'modal' });
-    this.modalWrapper = div({ className: 'grey-modal' });
-    this.modalWrapper.addListener('click', this.onOutsideClick);
+    this.modalWrapper = div({ className: 'grey-modal', onclick: this.onOutsideClick });
     this.modalContent = div(
       {
         className: styles.content,

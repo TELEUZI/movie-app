@@ -1,5 +1,6 @@
 import { BaseComponent } from 'src/app/components/base-component';
 import { button } from 'src/app/components/button/button';
+import { input } from 'src/app/components/input/input';
 import { type Loader, loader } from 'src/app/components/loader/loader';
 import { modalWindow } from 'src/app/components/modal';
 import { div } from 'src/app/components/utils/div';
@@ -19,28 +20,52 @@ export class MovieListPage extends BaseComponent {
   };
   private filmListContainer: BaseComponent;
   private hasMoreButton: BaseComponent;
+  private favoriteOnlySwitch: BaseComponent<HTMLInputElement>;
 
   constructor() {
-    super({ tag: 'div', className: styles['film-list-page'] }, div({ className: styles.title, txt: 'Films' }));
+    super({ tag: 'div', className: styles['film-list-page'] });
+
+    this.favoriteOnlySwitch = input({
+      className: styles['favorite-only'],
+      type: 'checkbox',
+      onchange: () => {
+        this.paginationOptions.page = 1;
+        this.filmListContainer.destroyChildren();
+        this.loadFilms();
+      },
+    });
     this.filmListContainer = div({ className: styles['film-list'] });
     this.loader = loader();
     this.hasMoreButton = button({
       className: styles['load-more'],
       txt: 'Load more',
       onClick: () => {
-        this.loader.show();
         this.paginationOptions.page++;
         this.loadFilms();
       },
     });
-    this.appendChildren([this.filmListContainer, this.loader]);
+    this.appendChildren([
+      div(
+        { className: styles['title-container'] },
+        div({ className: styles.title, txt: 'Films' }),
+        div(
+          { className: styles['title-container'] },
+          div({ className: styles['favorite-only-label'], txt: 'Favorite only' }),
+          this.favoriteOnlySwitch,
+        ),
+      ),
+      this.filmListContainer,
+      this.loader,
+    ]);
     this.loadFilms().then(() => {
       this.append(this.hasMoreButton);
     });
   }
 
   public async loadFilms() {
-    const { data: films, hasMore } = await filmService.getFilms(this.paginationOptions);
+    this.loader.show();
+    const getMovies = this.favoriteOnlySwitch.getNode().checked ? filmService.getFavoriteFilms : filmService.getFilms;
+    const { data: films, hasMore } = await getMovies.call(filmService, this.paginationOptions);
     const filmList = films.map((film) =>
       movieCard(film, () => {
         this.showFilmModal(film);
