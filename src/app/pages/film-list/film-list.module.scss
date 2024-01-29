@@ -1,0 +1,18 @@
+.film-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(430px, 1fr));
+  grid-gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.film-list-page {
+  padding: 1rem;
+  .title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+}
+
+.load-more {
+}

@@ -1,11 +1,9 @@
 import './style.scss';
-import './normalize.scss';
 
 import { isNotNullable } from '../utils/isNullable';
-import type { Unsubscribe } from '../utils/observable';
 
 export type Props<T extends HTMLElement = HTMLElement> = Partial<
-  Omit<T, 'style' | 'dataset' | 'classList' | 'children'>
+  Omit<T, 'style' | 'dataset' | 'classList' | 'children' | 'tagName'>
 > & {
   txt?: string;
   tag?: keyof HTMLElementTagNameMap;
@@ -16,9 +14,7 @@ export class BaseComponent<T extends HTMLElement = HTMLElement> {
 
   protected children: BaseComponent[] = [];
 
-  protected subs: Unsubscribe[] = [];
-
-  constructor(p: Props<T>, ...children: (BaseComponent | null)[]) {
+  constructor(p: Props<T>, ...children: (BaseComponent | HTMLElement | null)[]) {
     p.txt ? (p.textContent = p.txt) : p;
     const node = document.createElement(p.tag ?? 'div') as T;
     Object.assign(node, p);
@@ -37,8 +33,37 @@ export class BaseComponent<T extends HTMLElement = HTMLElement> {
     }
   }
 
-  public appendChildren(children: (BaseComponent | HTMLElement)[]): void {
-    children.forEach((el) => {
+  public updateChildren(
+    children: (BaseComponent | HTMLElement)[],
+    update: (child: BaseComponent, index: number) => BaseComponent,
+  ): void {
+    if (this.children.length === 0) {
+      this.appendChildren(children);
+    } else {
+      this.destroyChildren();
+      this.children = children.map((value, index) => {
+        return update(value as BaseComponent, index);
+      });
+      this.appendChildren(this.children);
+    }
+  }
+
+  public replaceChild(oldChild: BaseComponent, newChild: BaseComponent): void {
+    const index = this.children.indexOf(oldChild);
+    if (index !== -1) {
+      this.children[index] = newChild;
+      this.node.replaceChild(newChild.getNode(), oldChild.getNode());
+    }
+  }
+
+  public replaceChildren(children: BaseComponent[]): void {
+    this.destroyChildren();
+    this.children = children;
+    this.appendChildren(this.children);
+  }
+
+  public appendChildren(children: (BaseComponent | HTMLElement | null)[]): void {
+    children.filter(isNotNullable).forEach((el) => {
       this.append(el);
     });
   }
@@ -102,13 +127,6 @@ export class BaseComponent<T extends HTMLElement = HTMLElement> {
 
   public destroy(): void {
     this.destroyChildren();
-    this.unsubscribe();
     this.node.remove();
-  }
-
-  public unsubscribe(): void {
-    this.subs.forEach((sub) => {
-      sub();
-    });
   }
 }

@@ -1,20 +1,21 @@
-import './button.module.scss';
-
 import { BaseComponent } from '../base-component';
+import styles from './button.module.scss';
 
 interface Props {
   txt: string;
   onClick?: () => void;
-  buttonClasses?: string[];
+  className?: string;
+  innerHTML?: string;
 }
 
-export const button = ({ txt, onClick, buttonClasses = [] }: Props) =>
+export const button = ({ txt, onClick, className, innerHTML }: Props) =>
   new BaseComponent({
     tag: 'button',
-    className: 'button '.concat(buttonClasses.join(' ')),
+    className: `${styles.button} ${className || ''}`,
     txt,
     onclick: (e: Event) => {
       e.preventDefault();
       onClick?.();
     },
+    innerHTML,
   });

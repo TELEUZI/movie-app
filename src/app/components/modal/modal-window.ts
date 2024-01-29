@@ -1,14 +1,12 @@
-import './modal-window.scss';
-
-import { Subject } from 'src/app/utils/subject';
-
 import { BaseComponent } from '../base-component';
 import { button } from '../button/button';
 import { div } from '../utils/div';
+import { h2 } from '../utils/h';
+import styles from './modal-window.module.scss';
 
 export interface IModalPopup {
   title: string;
-  description: string;
+  description: string | BaseComponent;
   confirmText?: string;
   declineText?: string;
 }
@@ -18,21 +16,23 @@ export class ModalWindow extends BaseComponent {
 
   private readonly modalWrapper: BaseComponent;
 
-  private readonly result = new Subject<boolean>(false);
+  private resolve?: (value: boolean) => void;
 
-  constructor({ config }: { config: IModalPopup }) {
+  constructor(config: IModalPopup) {
     super({ className: 'modal' });
     this.modalWrapper = div({ className: 'grey-modal' });
     this.modalWrapper.addListener('click', this.onOutsideClick);
     this.modalContent = div(
       {
-        className: 'modal-content',
+        className: styles.content,
       },
-      div({ className: 'modal-header', txt: config.title }),
-      div({ className: 'modal-body', txt: config.description }),
+      div({ className: styles.header }, h2('', config.title)),
+      config.description instanceof BaseComponent
+        ? config.description
+        : div({ className: styles.body, txt: config.description }),
       div(
         {
-          className: 'modal-footer',
+          className: styles.footer,
         },
         button({
           txt: config.confirmText ?? 'OK',
@@ -54,9 +54,11 @@ export class ModalWindow extends BaseComponent {
     this.appendChildren([this.modalContent, this.modalWrapper]);
   }
 
-  public open(parent: BaseComponent | HTMLElement): Subject<boolean> {
+  public open(parent: BaseComponent | HTMLElement = document.body): Promise<boolean> {
     parent.append(this.node);
-    return this.result;
+    return new Promise((resolve) => {
+      this.resolve = resolve;
+    });
   }
 
   public getModalWrapper(): BaseComponent {
@@ -64,7 +66,7 @@ export class ModalWindow extends BaseComponent {
   }
 
   private setResult(result: boolean): void {
-    this.result.next(result);
+    this.resolve?.(result);
     this.destroy();
   }
 
@@ -75,4 +77,4 @@ export class ModalWindow extends BaseComponent {
   };
 }
 
-export const modalWindow = ({ config }: { config: IModalPopup }) => new ModalWindow({ config });
+export const modalWindow = (config: IModalPopup) => new ModalWindow(config);
