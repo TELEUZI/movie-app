@@ -61,10 +61,6 @@ export class ModalWindow extends BaseComponent {
     });
   }
 
-  public getModalWrapper(): BaseComponent {
-    return this.modalWrapper;
-  }
-
   private setResult(result: boolean): void {
     this.resolve?.(result);
     this.destroy();

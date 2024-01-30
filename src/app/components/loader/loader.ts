@@ -7,7 +7,7 @@ export class Loader extends BaseComponent {
   private spinner = div({});
 
   constructor() {
-    super({ tag: 'div', className: 'grey-modal' });
+    super({ className: 'grey-modal' });
     this.append(this.spinner);
   }
 

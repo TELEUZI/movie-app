@@ -2,7 +2,7 @@ import { BaseComponent } from '@components/base-component';
 import { button } from '@components/button/button';
 import type { Loader } from '@components/loader/loader';
 import { loader } from '@components/loader/loader';
-import { modalWindow } from '@components/modal';
+import { modalWindow } from '@components/modal/modal-window';
 import { div } from '@components/utils/div';
 import { input } from '@components/utils/input';
 import type { MovieWithFavorite } from '@interfaces/movie.interface';
@@ -24,7 +24,7 @@ export class MovieListPage extends BaseComponent {
   private readonly favoriteOnlySwitch: BaseComponent<HTMLInputElement>;
 
   constructor() {
-    super({ tag: 'div', className: styles['movie-list-page'] });
+    super({ className: styles['movie-list-page'] });
 
     this.favoriteOnlySwitch = input({
       className: styles['favorite-only'],
@@ -45,6 +45,7 @@ export class MovieListPage extends BaseComponent {
         this.loadMovies();
       },
     });
+
     this.appendChildren([
       div(
         { className: styles['title-container'] },
@@ -58,6 +59,7 @@ export class MovieListPage extends BaseComponent {
       this.movieListContainer,
       this.loader,
     ]);
+
     this.loadMovies().then(() => {
       this.append(this.hasMoreButton);
     });

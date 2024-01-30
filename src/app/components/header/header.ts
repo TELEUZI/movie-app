@@ -1,7 +1,7 @@
 import rsSchoolLogo from '@assets/rs_school.svg';
 import { BaseComponent } from '@components/base-component';
 import { img } from '@components/img/img';
-import { link } from '@components/link/link';
+import { a } from '@components/utils/a';
 import { div } from '@components/utils/div';
 import { h2 } from '@components/utils/h';
 
@@ -15,7 +15,7 @@ export const header = () => {
       {
         className: styles.logo,
       },
-      link(
+      a(
         { href: 'https://rs.school/js/', target: '_blank' },
         img({
           src: rsSchoolLogo,
