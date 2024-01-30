@@ -3,15 +3,13 @@ import { div } from '@components/utils/div';
 
 import styles from './img.module.scss';
 
-export const img = ({ src = '', alt = '', className = '' }) => {
-  const image = new BaseComponent<HTMLElementTagNameMap['img']>({
+export const img = ({ src = '', alt = '', className = '' }) =>
+  new BaseComponent<HTMLElementTagNameMap['img']>({
     tag: 'img',
     className,
+    src,
+    alt,
   });
-  image.setAttribute('src', src);
-  image.setAttribute('alt', alt);
-  return image;
-};
 
 export const imageWithPlaceholder = ({ src = '', alt = '', className = '' }) => {
   const image = new Image();
