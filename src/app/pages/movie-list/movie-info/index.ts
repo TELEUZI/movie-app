@@ -47,7 +47,7 @@ class MovieInfoComponent extends BaseComponent {
     );
     this.favoriteIcon = iconFromCode(
       {
-        className: `${styles.button} ${styles.favoriteButton} ${movie.isFavorite && styles.favorite}`,
+        className: `${styles.favoriteButton} ${movie.isFavorite && styles.favorite}`,
       },
       '&#x2605;',
     );
