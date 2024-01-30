@@ -7,7 +7,7 @@ import { h2 } from '@components/utils/h';
 
 import styles from './header.module.scss';
 
-export function header() {
+export const header = () => {
   return new BaseComponent(
     { tag: 'header', className: styles.header },
     h2(styles.title, 'Movie app'),
@@ -24,4 +24,4 @@ export function header() {
       ),
     ),
   );
-}
+};

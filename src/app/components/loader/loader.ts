@@ -22,6 +22,4 @@ export class Loader extends BaseComponent {
   }
 }
 
-export function loader() {
-  return new Loader();
-}
+export const loader = () => new Loader();

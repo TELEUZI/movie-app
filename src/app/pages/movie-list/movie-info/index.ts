@@ -58,6 +58,4 @@ class MovieInfo extends BaseComponent {
   }
 }
 
-export function movieInfo(movie: MovieWithFavorite, onMakeFavorite: () => void) {
-  return new MovieInfo(movie, onMakeFavorite);
-}
+export const movieInfo = (movie: MovieWithFavorite, onMakeFavorite: () => void) => new MovieInfo(movie, onMakeFavorite);

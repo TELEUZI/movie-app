@@ -1,10 +1,10 @@
 import { BaseComponent } from '@components/base-component';
 import { button } from '@components/button/button';
-import { input } from '@components/input/input';
 import type { Loader } from '@components/loader/loader';
 import { loader } from '@components/loader/loader';
 import { modalWindow } from '@components/modal';
 import { div } from '@components/utils/div';
+import { input } from '@components/utils/input';
 import type { MovieWithFavorite } from '@interfaces/movie.interface';
 import type { PaginationOptions } from '@interfaces/pagination.interface';
 import { movieService } from '@services/movie.service';
