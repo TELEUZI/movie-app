@@ -1,11 +1,11 @@
-.film-list {
+.movie-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   grid-gap: 1rem;
   margin-bottom: 3rem;
 }
 
-.film-list-page {
+.movie-list-page {
   padding: 1rem;
 
   .title-container {

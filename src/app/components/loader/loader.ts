@@ -1,7 +1,7 @@
-import './styles.scss';
+import { BaseComponent } from '@components/base-component';
+import { div } from '@components/utils/div';
 
-import { BaseComponent } from '../base-component';
-import { div } from '../utils/div';
+import styles from './loader.module.scss';
 
 export class Loader extends BaseComponent {
   private spinner = div({});
@@ -13,11 +13,11 @@ export class Loader extends BaseComponent {
 
   public show(): void {
     this.addClass('grey-modal');
-    this.spinner.addClass('loader');
+    this.spinner.addClass(styles.loader);
   }
 
   public hide(): void {
-    this.spinner.removeClass('loader');
+    this.spinner.removeClass(styles.loader);
     this.removeClass('grey-modal');
   }
 }

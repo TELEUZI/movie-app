@@ -1,4 +1,5 @@
-import { BaseComponent } from '../base-component';
+import { BaseComponent } from '@components/base-component';
+
 import styles from './button.module.scss';
 
 interface Props {

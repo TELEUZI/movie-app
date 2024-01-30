@@ -1,8 +1,9 @@
-import typescript from '../../../assets/typescript.svg';
-import { BaseComponent } from '../base-component';
-import { img } from '../img/img';
-import { link } from '../link/link';
-import { div } from '../utils/div';
+import typescript from '@assets/typescript.svg';
+import { BaseComponent } from '@components/base-component';
+import { img } from '@components/img/img';
+import { link } from '@components/link/link';
+import { div } from '@components/utils/div';
+
 import styles from './header.module.scss';
 
 export function header() {

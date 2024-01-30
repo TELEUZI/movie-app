@@ -1,6 +1,6 @@
 import './style.scss';
 
-import { isNotNullable } from '../utils/isNullable';
+import { isNotNullable } from '@utils/isNullable';
 
 export type Props<T extends HTMLElement = HTMLElement> = Partial<
   Omit<T, 'style' | 'dataset' | 'classList' | 'children' | 'tagName'>

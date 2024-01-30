@@ -1,6 +1,7 @@
 import './link.scss';
 
-import { BaseComponent } from '../base-component';
+import { BaseComponent } from '@components/base-component';
+
 class Link extends BaseComponent<HTMLLinkElement> {
   constructor(link: string, children: BaseComponent[], txt = '') {
     super({ tag: 'a', txt, className: 'link' }, ...children);

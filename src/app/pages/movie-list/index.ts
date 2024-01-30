@@ -1,80 +1,80 @@
-import { BaseComponent } from 'src/app/components/base-component';
-import { button } from 'src/app/components/button/button';
-import { input } from 'src/app/components/input/input';
-import { type Loader, loader } from 'src/app/components/loader/loader';
-import { modalWindow } from 'src/app/components/modal';
-import { div } from 'src/app/components/utils/div';
-import type { MovieWithFavorite } from 'src/app/interfaces/movie.interface';
-import type { PaginationOptions } from 'src/app/interfaces/pagination.interface';
-import { filmService } from 'src/app/services/movie.service';
+import { BaseComponent } from '@components/base-component';
+import { button } from '@components/button/button';
+import { input } from '@components/input/input';
+import type { Loader } from '@components/loader/loader';
+import { loader } from '@components/loader/loader';
+import { modalWindow } from '@components/modal';
+import { div } from '@components/utils/div';
+import type { MovieWithFavorite } from '@interfaces/movie.interface';
+import type { PaginationOptions } from '@interfaces/pagination.interface';
+import { movieService } from '@services/movie.service';
 
 import { movieCard } from './movie-card';
-import { filmInfo } from './movie-info';
-import styles from './movie-list.module.scss';
+import { movieInfo } from './movie-info';
+import styles from './styles.module.scss';
 
 export class MovieListPage extends BaseComponent {
   private readonly loader: Loader;
   private readonly paginationOptions: PaginationOptions = {
     page: 1,
-    limit: 2,
+    limit: 6,
   };
-  private readonly filmListContainer: BaseComponent;
+  private readonly movieListContainer: BaseComponent;
   private readonly hasMoreButton: BaseComponent;
   private readonly favoriteOnlySwitch: BaseComponent<HTMLInputElement>;
 
   constructor() {
-    super({ tag: 'div', className: styles['film-list-page'] });
+    super({ tag: 'div', className: styles['movie-list-page'] });
 
     this.favoriteOnlySwitch = input({
       className: styles['favorite-only'],
       type: 'checkbox',
       onchange: () => {
         this.paginationOptions.page = 1;
-        this.filmListContainer.destroyChildren();
-        this.loadFilms();
+        this.movieListContainer.destroyChildren();
+        this.loadMovies();
       },
     });
-    this.filmListContainer = div({ className: styles['film-list'] });
+    this.movieListContainer = div({ className: styles['movie-list'] });
     this.loader = loader();
     this.hasMoreButton = button({
       className: styles['load-more'],
       txt: 'Load more',
       onClick: () => {
         this.paginationOptions.page++;
-        this.loadFilms();
+        this.loadMovies();
       },
     });
     this.appendChildren([
       div(
         { className: styles['title-container'] },
-        div({ className: styles.title, txt: 'Films' }),
+        div({ className: styles.title, txt: 'Movies' }),
         div(
           { className: styles['title-container'] },
           div({ className: styles['favorite-only-label'], txt: 'Favorite only' }),
           this.favoriteOnlySwitch,
         ),
       ),
-      this.filmListContainer,
+      this.movieListContainer,
       this.loader,
     ]);
-    this.loadFilms().then(() => {
+    this.loadMovies().then(() => {
       this.append(this.hasMoreButton);
     });
   }
 
-  public async loadFilms() {
+  public async loadMovies() {
     this.loader.show();
     const isFavoriteOnly = this.favoriteOnlySwitch.getNode().checked;
-    const getMovies = isFavoriteOnly ? filmService.getFavoriteFilms : filmService.getFilms;
-    const { data: films, hasMore } = await getMovies.call(filmService, this.paginationOptions);
-    const filmList = films.map((film) =>
-      movieCard(film, () => {
-        this.showFilmModal(film);
+    const { data: movies, hasMore } = await movieService.getMovies(this.paginationOptions, isFavoriteOnly);
+    const movieList = movies.map((movie) =>
+      movieCard(movie, () => {
+        this.showMovieModal(movie);
       }),
     );
     requestAnimationFrame(() => {
       this.loader.hide();
-      this.filmListContainer.appendChildren(filmList);
+      this.movieListContainer.appendChildren(movieList);
       if (!hasMore) {
         this.hasMoreButton.addClass('hidden');
       } else {
@@ -83,14 +83,14 @@ export class MovieListPage extends BaseComponent {
     });
   }
 
-  public showFilmModal(film: MovieWithFavorite) {
-    const movieDescription = filmInfo(film, () => {
-      filmService.updateFavoriteMovies(film.kinopoiskId.toString());
-      film.isFavorite = !film.isFavorite;
+  public showMovieModal(movie: MovieWithFavorite) {
+    const movieDescription = movieInfo(movie, () => {
+      movieService.updateFavoriteMovies(movie.kinopoiskId.toString());
+      movie.isFavorite = !movie.isFavorite;
       movieDescription.updateFavoriteIcon();
     });
     const modal = modalWindow({
-      title: film.nameRu,
+      title: movie.nameRu,
       description: movieDescription,
     });
     modal.open(this.node);

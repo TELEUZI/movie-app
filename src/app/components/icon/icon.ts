@@ -1,15 +1,6 @@
 import './icon.scss';
 
-import type { ElementFnProps } from '../base-component';
-import { BaseComponent } from '../base-component';
-
-class Icon extends BaseComponent {
-  constructor(iconClass: string[] = []) {
-    super({ tag: 'div', className: `icon ${iconClass.join(' ')}` });
-  }
-}
-
-export const icon = (iconClass: string[] = []) => new Icon(iconClass);
+import { BaseComponent, type ElementFnProps } from '@components/base-component';
 
 export const i = (props: ElementFnProps, ...children: BaseComponent[]) =>
   new BaseComponent({ ...props, tag: 'i' }, ...children);

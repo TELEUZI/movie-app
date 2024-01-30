@@ -1,7 +1,8 @@
-import { BaseComponent } from '../base-component';
-import { button } from '../button/button';
-import { div } from '../utils/div';
-import { h2 } from '../utils/h';
+import { BaseComponent } from '@components/base-component';
+import { button } from '@components/button/button';
+import { div } from '@components/utils/div';
+import { h2 } from '@components/utils/h';
+
 import styles from './modal-window.module.scss';
 
 export interface IModalPopup {

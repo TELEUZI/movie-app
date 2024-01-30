@@ -1,5 +1,6 @@
-import { BaseComponent } from '../base-component';
-import { div } from '../utils/div';
+import { BaseComponent } from '@components/base-component';
+import { div } from '@components/utils/div';
+
 import styles from './img.module.scss';
 
 export const img = ({ src = '', alt = '', className = '' }) => {

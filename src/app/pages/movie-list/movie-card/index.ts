@@ -1,10 +1,10 @@
-import { imageWithPlaceholder } from 'src/app/components/img/img';
-import { div } from 'src/app/components/utils/div';
-import type { Movie } from 'src/app/interfaces/movie.interface';
+import { imageWithPlaceholder } from '@components/img/img';
+import { div } from '@components/utils/div';
+import type { Movie } from '@interfaces/movie.interface';
 
-import styles from './movie-card.module.scss';
+import styles from './styles.module.scss';
 
-export const movieCard = (film: Movie, onClick: () => void) =>
+export const movieCard = (movie: Movie, onClick: () => void) =>
   div(
     {
       className: styles.card,
@@ -13,19 +13,19 @@ export const movieCard = (film: Movie, onClick: () => void) =>
       },
     },
     imageWithPlaceholder({
-      src: film.posterUrlPreview,
+      src: movie.posterUrlPreview,
       className: styles.poster,
     }),
     div({
       className: styles.title,
-      txt: film.nameRu,
+      txt: movie.nameRu,
     }),
     div({
       className: styles.year,
-      txt: film.year.toString(),
+      txt: movie.year.toString(),
     }),
     div({
       className: styles.genres,
-      txt: film.genres.map(({ genre }) => genre).join(', '),
+      txt: movie.genres.map(({ genre }) => genre).join(', '),
     }),
   );
