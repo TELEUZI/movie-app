@@ -5,7 +5,7 @@ import type { MovieWithFavorite } from '@interfaces/movie.interface';
 
 import styles from './styles.module.scss';
 
-class MovieInfo extends BaseComponent {
+class MovieInfoComponent extends BaseComponent {
   private readonly favoriteIcon: BaseComponent;
   constructor(movie: MovieWithFavorite, onMakeFavorite: () => void) {
     super(
@@ -42,7 +42,7 @@ class MovieInfo extends BaseComponent {
     );
     this.favoriteIcon = iconFromCode(
       {
-        className: `${styles.button} ${styles['favorite-button']} ${movie.isFavorite && styles.favorite}`,
+        className: `${styles.button} ${styles.favoriteButton} ${movie.isFavorite && styles.favorite}`,
       },
       '&#x2605;',
     );
@@ -56,4 +56,5 @@ class MovieInfo extends BaseComponent {
   }
 }
 
-export const movieInfo = (movie: MovieWithFavorite, onMakeFavorite: () => void) => new MovieInfo(movie, onMakeFavorite);
+export const MovieInfo = (movie: MovieWithFavorite, onMakeFavorite: () => void) =>
+  new MovieInfoComponent(movie, onMakeFavorite);

@@ -4,7 +4,7 @@ import type { Movie } from '@interfaces/movie.interface';
 
 import styles from './styles.module.scss';
 
-export const movieCard = (movie: Movie, onClick: () => void) =>
+export const MovieCard = (movie: Movie, onClick: () => void) =>
   div(
     {
       className: styles.card,
