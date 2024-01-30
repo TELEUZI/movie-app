@@ -19,6 +19,17 @@ module.exports = {
         'simple-import-sort/imports': 'error',
         'simple-import-sort/exports': 'error',
         'unused-imports/no-unused-imports': 'warn',
+        '@typescript-eslint/explicit-member-accessibility': [
+          'error',
+          {
+            overrides: {
+              accessors: 'explicit',
+              constructors: 'no-public',
+              properties: 'explicit',
+              parameterProperties: 'explicit',
+            },
+          },
+        ],
       },
     },
     {

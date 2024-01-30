@@ -51,7 +51,7 @@ class MovieInfoComponent extends BaseComponent {
     );
   }
 
-  updateFavoriteIcon() {
+  public updateFavoriteIcon() {
     this.favoriteIcon.toggleClass(styles.favorite);
   }
 }
