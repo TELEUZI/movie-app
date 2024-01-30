@@ -1,5 +1,5 @@
 import { BaseComponent } from '@components/base-component';
-import { iFromCode } from '@components/icon/icon';
+import { iconFromCode } from '@components/icon/icon';
 import { imageWithPlaceholder } from '@components/img/img';
 import { div } from '@components/utils/div';
 import { span } from '@components/utils/span';
@@ -42,7 +42,7 @@ class MovieInfo extends BaseComponent {
         div({ className: styles.premiere, txt: movie.premiereRu }),
       ),
     );
-    this.favoriteIcon = iFromCode(
+    this.favoriteIcon = iconFromCode(
       {
         className: `${styles.button} ${styles['favorite-button']} ${movie.isFavorite && styles.favorite}`,
       },
