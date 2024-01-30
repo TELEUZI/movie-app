@@ -1,4 +1,4 @@
-import { imageWithPlaceholder } from '@components/img/img';
+import { ImageWithPlaceholder } from '@components/img/img';
 import { div } from '@components/tags';
 import type { Movie } from '@interfaces/movie.interface';
 
@@ -12,7 +12,7 @@ export const movieCard = (movie: Movie, onClick: () => void) =>
         onClick();
       },
     },
-    imageWithPlaceholder({
+    ImageWithPlaceholder({
       src: movie.posterUrlPreview,
       className: styles.poster,
     }),

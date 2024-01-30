@@ -1,5 +1,5 @@
 import { BaseComponent } from '@components/base-component';
-import { button } from '@components/button/button';
+import { Button } from '@components/button/button';
 import { div, h2 } from '@components/tags';
 
 import styles from './modal-window.module.scss';
@@ -11,7 +11,7 @@ export interface IModalPopup {
   declineText?: string;
 }
 
-export class ModalWindow extends BaseComponent {
+class ModalWindowComponent extends BaseComponent {
   private readonly modalContent: BaseComponent;
 
   private readonly modalWrapper: BaseComponent;
@@ -33,14 +33,14 @@ export class ModalWindow extends BaseComponent {
         {
           className: styles.footer,
         },
-        button({
+        Button({
           txt: config.confirmText ?? 'OK',
           onClick: () => {
             this.setResult(true);
           },
         }),
         config.declineText != null
-          ? button({
+          ? Button({
               txt: config.declineText,
               onClick: () => {
                 this.setResult(false);
@@ -72,4 +72,4 @@ export class ModalWindow extends BaseComponent {
   };
 }
 
-export const modalWindow = (config: IModalPopup) => new ModalWindow(config);
+export const ModalWindow = (config: IModalPopup) => new ModalWindowComponent(config);

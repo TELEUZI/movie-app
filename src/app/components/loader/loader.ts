@@ -3,7 +3,7 @@ import { div } from '@components/tags';
 
 import styles from './loader.module.scss';
 
-export class Loader extends BaseComponent {
+class LoaderCompoent extends BaseComponent {
   private spinner = div({});
 
   constructor() {
@@ -22,4 +22,4 @@ export class Loader extends BaseComponent {
   }
 }
 
-export const loader = () => new Loader();
+export const Loader = () => new LoaderCompoent();

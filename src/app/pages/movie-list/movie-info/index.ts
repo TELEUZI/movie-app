@@ -1,5 +1,5 @@
 import { BaseComponent } from '@components/base-component';
-import { imageWithPlaceholder } from '@components/img/img';
+import { ImageWithPlaceholder } from '@components/img/img';
 import { div, iconFromCode, span } from '@components/tags';
 import type { MovieWithFavorite } from '@interfaces/movie.interface';
 
@@ -10,7 +10,7 @@ class MovieInfo extends BaseComponent {
   constructor(movie: MovieWithFavorite, onMakeFavorite: () => void) {
     super(
       { className: styles.info },
-      imageWithPlaceholder({
+      ImageWithPlaceholder({
         src: movie.posterUrlPreview,
         className: styles.poster,
       }),

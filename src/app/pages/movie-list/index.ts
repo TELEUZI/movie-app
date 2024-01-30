@@ -1,8 +1,7 @@
 import { BaseComponent } from '@components/base-component';
-import { button } from '@components/button/button';
-import type { Loader } from '@components/loader/loader';
-import { loader } from '@components/loader/loader';
-import { modalWindow } from '@components/modal/modal-window';
+import { Button } from '@components/button/button';
+import { Loader } from '@components/loader/loader';
+import { ModalWindow } from '@components/modal/modal-window';
 import { div, input } from '@components/tags';
 import type { MovieWithFavorite } from '@interfaces/movie.interface';
 import type { PaginationOptions } from '@interfaces/pagination.interface';
@@ -12,8 +11,8 @@ import { movieCard } from './movie-card';
 import { movieInfo } from './movie-info';
 import styles from './styles.module.scss';
 
-export class MovieListPage extends BaseComponent {
-  private readonly loader: Loader;
+class MovieListPageComponent extends BaseComponent {
+  private readonly loader: ReturnType<typeof Loader>;
   private readonly paginationOptions: PaginationOptions = {
     page: 1,
     limit: 6,
@@ -35,8 +34,8 @@ export class MovieListPage extends BaseComponent {
       },
     });
     this.movieListContainer = div({ className: styles['movie-list'] });
-    this.loader = loader();
-    this.hasMoreButton = button({
+    this.loader = Loader();
+    this.hasMoreButton = Button({
       className: styles['load-more'],
       txt: 'Load more',
       onClick: () => {
@@ -90,7 +89,7 @@ export class MovieListPage extends BaseComponent {
       movie.isFavorite = !movie.isFavorite;
       movieDescription.updateFavoriteIcon();
     });
-    const modal = modalWindow({
+    const modal = ModalWindow({
       title: movie.nameRu,
       description: movieDescription,
     });
@@ -98,4 +97,4 @@ export class MovieListPage extends BaseComponent {
   }
 }
 
-export const movieListPage = new MovieListPage();
+export const MovieListPage = new MovieListPageComponent();

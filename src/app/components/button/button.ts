@@ -8,7 +8,7 @@ interface Props {
   className?: string;
 }
 
-export const button = ({ txt, onClick, className }: Props) =>
+export const Button = ({ txt, onClick, className }: Props) =>
   new BaseComponent({
     tag: 'button',
     className: `${styles.button} ${className || ''}`,

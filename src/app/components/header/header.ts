@@ -4,7 +4,7 @@ import { a, div, h2, img } from '@components/tags';
 
 import styles from './header.module.scss';
 
-export const header = () => {
+export const Header = () => {
   return new BaseComponent(
     { tag: 'header', className: styles.header },
     h2(styles.title, 'Movie app'),

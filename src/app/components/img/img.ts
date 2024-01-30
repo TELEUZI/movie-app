@@ -2,7 +2,7 @@ import { div } from '@components/tags';
 
 import styles from './img.module.scss';
 
-export const imageWithPlaceholder = ({ src = '', alt = '', className = '' }) => {
+export const ImageWithPlaceholder = ({ src = '', alt = '', className = '' }) => {
   const image = new Image();
   const wrapper = div(
     {
