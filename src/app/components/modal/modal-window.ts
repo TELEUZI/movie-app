@@ -1,7 +1,6 @@
 import { BaseComponent } from '@components/base-component';
 import { button } from '@components/button/button';
-import { div } from '@components/utils/div';
-import { h2 } from '@components/utils/h';
+import { div, h2 } from '@components/tags';
 
 import styles from './modal-window.module.scss';
 

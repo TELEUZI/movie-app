@@ -1,5 +1,5 @@
 import { BaseComponent } from '@components/base-component';
-import { div } from '@components/utils/div';
+import { div } from '@components/tags';
 
 import styles from './img.module.scss';
 

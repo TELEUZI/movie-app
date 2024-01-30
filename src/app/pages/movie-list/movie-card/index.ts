@@ -1,5 +1,5 @@
 import { imageWithPlaceholder } from '@components/img/img';
-import { div } from '@components/utils/div';
+import { div } from '@components/tags';
 import type { Movie } from '@interfaces/movie.interface';
 
 import styles from './styles.module.scss';

@@ -1,8 +1,6 @@
 import { BaseComponent } from '@components/base-component';
 import { imageWithPlaceholder } from '@components/img/img';
-import { div } from '@components/utils/div';
-import { iconFromCode } from '@components/utils/icon';
-import { span } from '@components/utils/span';
+import { div, iconFromCode, span } from '@components/tags';
 import type { MovieWithFavorite } from '@interfaces/movie.interface';
 
 import styles from './styles.module.scss';
