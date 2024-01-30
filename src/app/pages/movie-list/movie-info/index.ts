@@ -18,7 +18,7 @@ class MovieInfo extends BaseComponent {
       }),
       div({
         className: styles.description,
-        txt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales, ligula ornare sodales mattis, tellus lectus porttitor diam, vitae porta mi arcu ac nunc. Nam quam erat, aliquet at sodales id, consectetur a ligula. Mauris ut nunc sodales, efficitur neque eget, euismod massa. Phasellus odio mi, hendrerit at tortor rhoncus, interdum sollicitudin quam. Donec ultrices elit eu mauris tempus maximus. Vivamus quis risus eu lacus tempus consectetur. Etiam in porttitor velit.',
+        txt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales, ligula ornare sodales mattis, tellus lectus porttitor diam, vitae porta mi arcu ac nunc. Nam quam erat, aliquet at sodales id, consectetur a ligula. Mauris ut nunc sodales, efficitur neque eget, euismod massa.',
       }),
       div({ className: styles.row }, div({ txt: 'Year' }), div({ className: styles.year, txt: movie.year.toString() })),
       div(
@@ -49,11 +49,7 @@ class MovieInfo extends BaseComponent {
       '&#x2605;',
     );
     this.append(
-      div(
-        { className: styles.title, onclick: onMakeFavorite },
-        span({ className: styles['favorite-label'], txt: 'Add to favorite' }),
-        this.favoriteIcon,
-      ),
+      div({ className: styles.title, onclick: onMakeFavorite }, span({ txt: 'Add to favorite' }), this.favoriteIcon),
     );
   }
 
