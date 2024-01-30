@@ -9,6 +9,8 @@ export type Props<T extends HTMLElement = HTMLElement> = Partial<
   tag?: keyof HTMLElementTagNameMap;
 };
 
+export type ElementFnProps<T extends HTMLElement = HTMLElement> = Omit<Props<T>, 'tag'>;
+
 export class BaseComponent<T extends HTMLElement = HTMLElement> {
   protected node: T;
 

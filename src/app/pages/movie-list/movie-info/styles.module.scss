@@ -1,11 +1,28 @@
+.info {
+  width: 100%;
+  padding: 1rem;
+}
+
 .title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 1.5rem;
   font-weight: 700;
+  margin-bottom: 1rem;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.description {
+  font-size: 1rem;
+  font-weight: 400;
   margin-bottom: 1rem;
 }
 
 .poster {
   height: 360px;
+  max-width: 100%;
   margin-bottom: 1rem;
 }
 
@@ -20,6 +37,13 @@
   }
 }
 
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
 .year,
 .genres,
 .duration,
@@ -27,7 +51,23 @@
 .premiere {
   font-size: 1rem;
   font-weight: 700;
-  margin-bottom: 1rem;
+  text-align: end;
+}
+
+.favorite-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    background-color: #eee;
+  }
 }
 
 .favorite {

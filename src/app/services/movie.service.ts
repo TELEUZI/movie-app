@@ -1,30 +1,30 @@
-import type { FilmWithFavorite } from '../interfaces/film.interface.ts';
+import type { MovieWithFavorite } from '../interfaces/movie.interface.ts';
 import type { PaginationOptions, PaginationResponse } from '../interfaces/pagination.interface.ts';
 import { wait } from '../utils/wait.ts';
 import { localStorageService } from './local-storage.service.ts';
 
-class FilmService {
-  public async getFilms({ page, limit }: PaginationOptions): Promise<PaginationResponse<FilmWithFavorite>> {
+class MovieService {
+  public async getFilms({ page, limit }: PaginationOptions): Promise<PaginationResponse<MovieWithFavorite>> {
     await wait(1000);
     const favoriteMovies = this.getFavoriteMovies();
-    return import('../data/films.ts').then((module) => {
-      const films = module.films.slice((page - 1) * limit, page * limit);
+    return import('../data/movies.ts').then((module) => {
+      const films = module.movies.slice((page - 1) * limit, page * limit);
       return {
         data: films.map((film) => ({
           ...film,
           isFavorite: favoriteMovies.includes(film.kinopoiskId.toString()),
         })),
-        total: module.films.length,
-        hasMore: page * limit < module.films.length,
+        total: module.movies.length,
+        hasMore: page * limit < module.movies.length,
       };
     });
   }
 
-  public async getFavoriteFilms({ page, limit }: PaginationOptions): Promise<PaginationResponse<FilmWithFavorite>> {
+  public async getFavoriteFilms({ page, limit }: PaginationOptions): Promise<PaginationResponse<MovieWithFavorite>> {
     await wait(1000);
     const favoriteMovies = this.getFavoriteMovies();
-    return import('../data/films.ts').then((module) => {
-      const films = module.films.filter((film) => favoriteMovies.includes(film.kinopoiskId.toString()));
+    return import('../data/movies.ts').then((module) => {
+      const films = module.movies.filter((film) => favoriteMovies.includes(film.kinopoiskId.toString()));
       return {
         data: films.slice((page - 1) * limit, page * limit).map((film) => ({
           ...film,
@@ -37,7 +37,7 @@ class FilmService {
   }
 
   public getFilm(id: number) {
-    return import('../data/films.ts').then((module) => module.films.find((film) => film.kinopoiskId === id));
+    return import('../data/movies.ts').then((module) => module.movies.find((film) => film.kinopoiskId === id));
   }
 
   private getFavoriteMovies() {
@@ -56,4 +56,4 @@ class FilmService {
   }
 }
 
-export const filmService = new FilmService();
+export const filmService = new MovieService();

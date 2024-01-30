@@ -1,4 +1,4 @@
-export interface Film {
+export interface Movie {
   kinopoiskId: number;
   nameRu: string;
   nameEn: string | null;
@@ -11,7 +11,7 @@ export interface Film {
   premiereRu: string;
 }
 
-export interface FilmWithFavorite extends Film {
+export interface MovieWithFavorite extends Movie {
   isFavorite?: boolean;
 }
 

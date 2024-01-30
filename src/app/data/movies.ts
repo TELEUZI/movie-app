@@ -1,6 +1,6 @@
-import type { Film } from '../interfaces/film.interface';
+import type { Movie } from '../interfaces/movie.interface';
 
-export const films: Film[] = [
+export const movies: Movie[] = [
   {
     kinopoiskId: 5047468,
     nameRu: 'Холоп 2',

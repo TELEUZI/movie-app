@@ -6,7 +6,7 @@
   position: fixed;
   width: 75%;
   left: 50%;
-  top: 30%;
+  top: 15%;
   margin-left: -37.5%;
   background-color: var(--dark-gray);
   border: solid 4px var(--black);
@@ -20,7 +20,7 @@
 
 .header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   width: 100%;
   padding: 1rem;

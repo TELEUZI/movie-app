@@ -1,10 +1,10 @@
 import { imageWithPlaceholder } from 'src/app/components/img/img';
 import { div } from 'src/app/components/utils/div';
-import type { Film } from 'src/app/interfaces/film.interface';
+import type { Movie } from 'src/app/interfaces/movie.interface';
 
 import styles from './movie-card.module.scss';
 
-export const movieCard = (film: Film, onClick: () => void) =>
+export const movieCard = (film: Movie, onClick: () => void) =>
   div(
     {
       className: styles.card,
