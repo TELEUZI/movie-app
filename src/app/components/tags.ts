@@ -23,3 +23,11 @@ export const div = (p: ElementFnProps<HTMLDivElement>, ...children: (BaseCompone
 
 export const a = (props: ElementFnProps<HTMLLinkElement>, ...children: BaseComponent[]) =>
   new BaseComponent<HTMLLinkElement>({ ...props, tag: 'a' }, ...children);
+
+export const img = ({ src = '', alt = '', className = '' }) =>
+  new BaseComponent<HTMLElementTagNameMap['img']>({
+    tag: 'img',
+    className,
+    src,
+    alt,
+  });

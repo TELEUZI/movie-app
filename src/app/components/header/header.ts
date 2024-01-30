@@ -1,7 +1,6 @@
 import rsSchoolLogo from '@assets/rs_school.svg';
 import { BaseComponent } from '@components/base-component';
-import { img } from '@components/img/img';
-import { a, div, h2 } from '@components/tags';
+import { a, div, h2, img } from '@components/tags';
 
 import styles from './header.module.scss';
 

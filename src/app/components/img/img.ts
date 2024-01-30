@@ -1,15 +1,6 @@
-import { BaseComponent } from '@components/base-component';
 import { div } from '@components/tags';
 
 import styles from './img.module.scss';
-
-export const img = ({ src = '', alt = '', className = '' }) =>
-  new BaseComponent<HTMLElementTagNameMap['img']>({
-    tag: 'img',
-    className,
-    src,
-    alt,
-  });
 
 export const imageWithPlaceholder = ({ src = '', alt = '', className = '' }) => {
   const image = new Image();
