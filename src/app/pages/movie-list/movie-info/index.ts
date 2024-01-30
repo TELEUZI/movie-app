@@ -5,9 +5,14 @@ import type { MovieWithFavorite } from '@interfaces/movie.interface';
 
 import styles from './styles.module.scss';
 
+interface Props {
+  movie: MovieWithFavorite;
+  onMakeFavorite: () => void;
+}
+
 class MovieInfoComponent extends BaseComponent {
   private readonly favoriteIcon: BaseComponent;
-  constructor(movie: MovieWithFavorite, onMakeFavorite: () => void) {
+  constructor({ movie, onMakeFavorite }: Props) {
     super(
       { className: styles.info },
       ImageWithPlaceholder({
@@ -56,5 +61,4 @@ class MovieInfoComponent extends BaseComponent {
   }
 }
 
-export const MovieInfo = (movie: MovieWithFavorite, onMakeFavorite: () => void) =>
-  new MovieInfoComponent(movie, onMakeFavorite);
+export const MovieInfo = (props: Props) => new MovieInfoComponent(props);

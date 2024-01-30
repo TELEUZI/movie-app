@@ -62,8 +62,11 @@ class MovieListPageComponent extends BaseComponent {
     const isFavoriteOnly = this.favoriteOnlySwitch.getNode().checked;
     const { data: movies, hasMore } = await movieService.getMovies(this.paginationOptions, isFavoriteOnly);
     const movieList = movies.map((movie) =>
-      MovieCard(movie, () => {
-        this.showMovieModal(movie);
+      MovieCard({
+        movie,
+        onClick: () => {
+          this.showMovieModal(movie);
+        },
       }),
     );
     requestAnimationFrame(() => {
@@ -78,10 +81,13 @@ class MovieListPageComponent extends BaseComponent {
   }
 
   public showMovieModal(movie: MovieWithFavorite) {
-    const movieDescription = MovieInfo(movie, () => {
-      movieService.updateFavoriteMovies(movie.kinopoiskId.toString());
-      movie.isFavorite = !movie.isFavorite;
-      movieDescription.updateFavoriteIcon();
+    const movieDescription = MovieInfo({
+      movie,
+      onMakeFavorite: () => {
+        movieService.updateFavoriteMovies(movie.kinopoiskId.toString());
+        movie.isFavorite = !movie.isFavorite;
+        movieDescription.updateFavoriteIcon();
+      },
     });
     const modal = ModalWindow({
       title: movie.nameRu,
