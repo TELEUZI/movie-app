@@ -1,11 +1,11 @@
 import { BaseComponent, type ElementFnProps } from '@components/base-component';
 
-export function span(props: ElementFnProps<HTMLElement>, ...children: BaseComponent[]) {
-  return new BaseComponent({ ...props, tag: 'span' }, ...children);
-}
-export function main(props: ElementFnProps, ...children: BaseComponent[]) {
-  return new BaseComponent({ tag: 'main', ...props }, ...children);
-}
+export const span = (props: ElementFnProps<HTMLElement>, ...children: BaseComponent[]) =>
+  new BaseComponent({ ...props, tag: 'span' }, ...children);
+
+export const main = (props: ElementFnProps, ...children: BaseComponent[]) =>
+  new BaseComponent({ ...props, tag: 'main' }, ...children);
+
 export const label = (props: ElementFnProps, ...children: BaseComponent[]) =>
   new BaseComponent({ ...props, tag: 'label' }, ...children);
 
