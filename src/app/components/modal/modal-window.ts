@@ -1,5 +1,5 @@
 import { BaseComponent } from '@components/base-component';
-import { Button } from '@components/button/button';
+import { MyfavoriteComponent } from '@components/button/button';
 import { div, h2 } from '@components/tags';
 
 import styles from './modal-window.module.scss';
@@ -33,14 +33,14 @@ class ModalWindowComponent extends BaseComponent {
         {
           className: styles.footer,
         },
-        Button({
+        MyfavoriteComponent({
           txt: config.confirmText ?? 'OK',
           onClick: () => {
             this.setResult(true);
           },
         }),
         config.declineText != null
-          ? Button({
+          ? MyfavoriteComponent({
               txt: config.declineText,
               onClick: () => {
                 this.setResult(false);

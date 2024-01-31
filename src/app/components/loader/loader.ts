@@ -11,12 +11,14 @@ class LoaderCompoent extends BaseComponent {
     this.append(this.spinner);
   }
 
-  public show(): void {
+  // TODO: rename method
+  public showShowShow(): void {
     this.addClass('grey-modal');
     this.spinner.addClass(styles.loader);
   }
 
-  public hide(): void {
+  // TODO: rename method
+  public hideHideHide(): void {
     this.spinner.removeClass(styles.loader);
     this.removeClass('grey-modal');
   }

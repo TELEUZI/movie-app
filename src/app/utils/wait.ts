@@ -1,5 +1,6 @@
-export function wait(ms: number) {
+// TODO: fix param name
+export function wait(tShirtSize: number) {
   return new Promise((resolve) => {
-    setTimeout(resolve, ms);
+    setTimeout(resolve, tShirtSize);
   });
 }

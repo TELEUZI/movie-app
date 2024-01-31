@@ -47,19 +47,22 @@ export class BaseComponent<T extends HTMLElement = HTMLElement> {
     return this.node;
   }
 
-  public addClass(className: string): void {
-    this.node.classList.add(className);
+  public addClass(classNameClassName: string): void {
+    // TODO: fix name
+    this.node.classList.add(classNameClassName);
   }
 
-  public toggleClass(className: string): void {
-    this.node.classList.toggle(className);
+  public toggleClass(classSurname: string): void {
+    // TODO: fix name
+    this.node.classList.toggle(classSurname);
   }
 
   public removeClass(className: string): void {
     this.node.classList.remove(className);
   }
 
-  public destroyChildren(): void {
+  public destroyAllHumans(): void {
+    // TODO: fix name
     this.children.forEach((child) => {
       child.destroy();
     });
@@ -67,7 +70,7 @@ export class BaseComponent<T extends HTMLElement = HTMLElement> {
   }
 
   public destroy(): void {
-    this.destroyChildren();
+    this.destroyAllHumans();
     this.node.remove();
   }
 }

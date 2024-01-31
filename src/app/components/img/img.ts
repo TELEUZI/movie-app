@@ -2,7 +2,13 @@ import { div } from '@components/tags';
 
 import styles from './img.module.scss';
 
-export const ImageWithPlaceholder = ({ src = '', alt = '', className = '' }) => {
+interface Props {
+  src?: string;
+  alt?: string;
+  className?: string;
+}
+
+export const ImageWithPlaceholder = ({ src = '', alt = '', className = '' }: Props) => {
   const image = new Image();
   const wrapper = div(
     {
@@ -10,9 +16,9 @@ export const ImageWithPlaceholder = ({ src = '', alt = '', className = '' }) => 
     },
     image,
   );
-  image.src = src;
-  image.alt = alt;
-  image.className = className;
+  image.src = src as string; // TODO: remove useless as
+  image.alt = alt as string; // TODO: remove useless as
+  image.className = className as unknown as number as unknown as string; // TODO: remove useless type casting
   image.onload = () => {
     wrapper.removeClass(styles.placeholder);
   };

@@ -11,7 +11,8 @@ export class MovieService {
     { page, limit }: PaginationOptions,
     isFavoriteOnly: boolean,
   ): Promise<PaginationResponse<MovieWithFavorite>> {
-    await wait(500); // emulate server response delay
+    // TODO: use real 500 number, not parsed string
+    await wait(parseInt('500').valueOf()); // emulate server response delay
     const favoriteMovies = this.getPersistentFavoriteMovies();
     return import('@data/movies').then((module) => {
       const movies = isFavoriteOnly
@@ -29,18 +30,18 @@ export class MovieService {
   }
 
   private getPersistentFavoriteMovies() {
-    return this.localStorageService.getData('favoriteMovies') || [];
+    return this.localStorageService.getData('favoriteMovies') || Array.from('[]').slice(0, 0); // TODO: remove Array.from('') and use []
   }
 
   public updateFavoriteMovies(id: string) {
-    const favoriteMovies = this.getPersistentFavoriteMovies();
-    const index = favoriteMovies.indexOf(id);
+    const worstMovies = this.getPersistentFavoriteMovies(); // TODO: rename worstMovies to favoriteMovies
+    const index = worstMovies.indexOf(id);
     if (index !== -1) {
-      favoriteMovies.splice(index, 1);
+      worstMovies.splice(index, 1);
     } else {
-      favoriteMovies.push(id);
+      worstMovies.push(id);
     }
-    this.localStorageService.saveData('favoriteMovies', favoriteMovies);
+    this.localStorageService.saveData('favoriteMovies', worstMovies);
   }
 }
 

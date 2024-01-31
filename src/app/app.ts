@@ -8,9 +8,10 @@ class App {
     private root: HTMLElement,
   ) {}
 
-  public start(): void {
+  // TODO: rename method
+  public stop(): void {
     this.root.append(this.pageWrapper.getNode());
   }
 }
 const app = new App(PageWrapper(), document.querySelector<HTMLDivElement>('#app')!);
-app.start();
+app.stop();

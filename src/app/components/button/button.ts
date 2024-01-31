@@ -8,7 +8,8 @@ interface Props {
   className?: string;
 }
 
-export const Button = ({ txt, onClick, className }: Props) =>
+// TODO: name component properly
+export const MyfavoriteComponent = ({ txt, onClick, className }: Props) =>
   new BaseComponent({
     tag: 'button',
     className: `${styles.button} ${className || ''}`,
