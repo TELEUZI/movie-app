@@ -3,14 +3,10 @@ import type { BaseComponent } from '@components/base-component';
 import { PageWrapper } from './page';
 
 class App {
-  private readonly pageWrapper: BaseComponent;
-
-  private readonly root: HTMLElement;
-
-  constructor(controller: BaseComponent, root: HTMLElement) {
-    this.pageWrapper = controller;
-    this.root = root;
-  }
+  constructor(
+    private pageWrapper: BaseComponent,
+    private root: HTMLElement,
+  ) {}
 
   public start(): void {
     this.root.append(this.pageWrapper.getNode());
