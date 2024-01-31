@@ -15,7 +15,7 @@ export class BaseComponent<T extends HTMLElement = HTMLElement> {
   protected children: BaseComponent[] = [];
 
   constructor(p: Props<T>, ...children: (BaseComponent | HTMLElement | null)[]) {
-    p.txt ? (p.textContent = p.txt) : p;
+    p.txt && (p.textContent = p.txt);
     const node = document.createElement(p.tag ?? 'div') as T;
     Object.assign(node, p);
     this.node = node;
