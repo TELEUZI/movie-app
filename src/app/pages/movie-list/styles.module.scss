@@ -12,13 +12,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     gap: 1rem;
   }
 
   .title {
     font-size: 2rem;
     font-weight: 700;
-    margin-bottom: 1rem;
+  }
+
+  .favorite-switcher {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
   }
 }

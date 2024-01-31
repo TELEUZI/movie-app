@@ -46,7 +46,7 @@ class MovieListPageComponent extends BaseComponent {
       div(
         { className: styles.titleContainer },
         div({ className: styles.title, txt: 'Movies' }),
-        div({ className: styles.titleContainer }, div({ txt: 'Favorite only' }), this.favoriteOnlySwitch),
+        div({ className: styles.favoriteSwitcher }, div({ txt: 'Favorite only' }), this.favoriteOnlySwitch),
       ),
       this.movieListContainer,
       this.loader,
