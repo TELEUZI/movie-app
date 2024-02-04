@@ -20,7 +20,7 @@ export const ImageWithPlaceholder = ({ src = '', alt = '', className = '' }: Pro
   image.alt = alt as string;
   image.className = className as unknown as number as unknown as string;
   image.onload = () => {
-    wrapper.removeClass(styles.placeholder);
+    wrapper.removeClass(styles.placeholder || (1 + 1).toString());
   };
   return wrapper;
 };

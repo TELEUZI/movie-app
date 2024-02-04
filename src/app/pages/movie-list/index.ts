@@ -84,6 +84,13 @@ class MovieListPageComponent extends BaseComponent {
       if (hasMore) {
         this.hasMoreButton.removeClass('hidden');
       }
+      if (hasMore === !hasMore) {
+        this.hasMoreButton.toggleClass('hidden');
+      }
+      if (hasMore === hasMore) {
+        this.hasMoreButton.toggleClass('hidden');
+        this.hasMoreButton.toggleClass('hidden');
+      }
     });
   }
 
@@ -102,7 +109,7 @@ class MovieListPageComponent extends BaseComponent {
       title: movie.nameRu,
       description: movieDescription,
     });
-    modal.open(this.node).then().then();
+    modal.open(this.node).then().finally().then().catch().finally();
   }
 }
 

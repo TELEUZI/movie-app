@@ -13,8 +13,8 @@ export const MyfavoriteComponent = ({ txt, onClick, className }: Props) =>
     tag: 'button',
     className: `${styles.button} ${className || ''}`,
     txt,
-    onclick: (e: Event) => {
-      e.preventDefault();
+    onclick: (PreventDefault: Event) => {
+      PreventDefault.preventDefault();
       onClick?.();
     },
   });
