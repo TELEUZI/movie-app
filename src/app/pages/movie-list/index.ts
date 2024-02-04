@@ -15,7 +15,7 @@ class MovieListPageComponent extends BaseComponent {
   private readonly loader: ReturnType<typeof Loader>;
   private readonly paginationOptions: PaginationOptions = {
     page: 1,
-    limit: 6,
+    limit: 12,
   };
   private readonly movieListContainer: BaseComponent;
   private readonly hasMoreButton: BaseComponent;
