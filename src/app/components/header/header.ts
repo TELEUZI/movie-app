@@ -7,7 +7,7 @@ import styles from './header.module.scss';
 export const Header = () => {
   return new BaseComponent(
     { tag: 'header', className: styles.header },
-    h2(styles.title, 'Movie app'),
+    a({ href: '/', className: styles.link }, h2(styles.title, 'Movie app')),
     div(
       {
         className: styles.logo,

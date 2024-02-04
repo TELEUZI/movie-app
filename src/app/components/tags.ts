@@ -18,6 +18,9 @@ export const iconFromCode = (props: ElementFnProps, code: string) =>
 export const h2 = (className: string, txt: string): BaseComponent<HTMLElementTagNameMap['h2']> =>
   new BaseComponent({ tag: 'h2', className, txt });
 
+export const h3 = (className: string, txt: string): BaseComponent<HTMLElementTagNameMap['h3']> =>
+  new BaseComponent({ tag: 'h3', className, txt });
+
 export const div = (props: ElementFnProps<HTMLDivElement>, ...children: (BaseComponent | HTMLElement | null)[]) =>
   new BaseComponent<HTMLDivElement>(props, ...children);
 

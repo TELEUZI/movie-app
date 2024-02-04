@@ -39,6 +39,10 @@ export class BaseComponent<T extends HTMLElement = HTMLElement> {
     });
   }
 
+  public setTextContent(text: string): void {
+    this.node.textContent = text;
+  }
+
   public getNode() {
     return this.node;
   }

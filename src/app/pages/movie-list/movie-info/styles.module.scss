@@ -30,7 +30,6 @@
 .poster {
   height: 360px;
   max-width: 100%;
-  margin-bottom: 1rem;
 }
 
 .link {
@@ -82,4 +81,17 @@
 
 .favorite {
   color: orange;
+}
+
+.wait-for-premiere-wrapper {
+  .wait-for-premiere {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--orange);
+    text-align: center;
+    @media screen and (max-width: 768px) {
+      font-size: 0.75rem;
+    }
+    margin: 0;
+  }
 }

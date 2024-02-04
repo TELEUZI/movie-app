@@ -1,6 +1,7 @@
 import { BaseComponent } from '@components/base-component';
 import { ImageWithPlaceholder } from '@components/img/img';
-import { div, iconFromCode, span } from '@components/tags';
+import { div, h3, iconFromCode, span } from '@components/tags';
+import { Timer } from '@components/timer/timer';
 import type { MovieWithFavorite } from '@interfaces/movie.interface';
 
 import styles from './styles.module.scss';
@@ -19,6 +20,13 @@ class MovieInfoComponent extends BaseComponent {
         src: movie.posterUrlPreview,
         className: styles.poster,
       }),
+      div(
+        {
+          className: styles.waitForPremiereWrapper,
+        },
+        h3(styles.waitForPremiere, 'Wait for the premiere'),
+        Timer(new Date(movie.premiereRu).getTime()),
+      ),
       div({
         className: styles.description,
         txt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales, ligula ornare sodales mattis, tellus lectus porttitor diam, vitae porta mi arcu ac nunc. Nam quam erat, aliquet at sodales id, consectetur a ligula. Mauris ut nunc sodales, efficitur neque eget, euismod massa.',

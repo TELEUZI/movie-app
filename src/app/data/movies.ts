@@ -77,7 +77,7 @@ export const movies: Movie[] = [
       },
     ],
     duration: 130,
-    premiereRu: '2024-01-01',
+    premiereRu: '2024-02-05',
   },
   {
     kinopoiskId: 5129233,
@@ -100,7 +100,7 @@ export const movies: Movie[] = [
       },
     ],
     duration: 119,
-    premiereRu: '2024-01-01',
+    premiereRu: '2025-01-01',
   },
   {
     kinopoiskId: 1166627,
@@ -120,7 +120,7 @@ export const movies: Movie[] = [
       },
     ],
     duration: 100,
-    premiereRu: '2024-01-04',
+    premiereRu: '2025-01-04',
   },
   {
     kinopoiskId: 602675,
@@ -149,7 +149,7 @@ export const movies: Movie[] = [
       },
     ],
     duration: 110,
-    premiereRu: '2024-01-04',
+    premiereRu: '2025-01-04',
   },
   {
     kinopoiskId: 5104536,
@@ -169,7 +169,7 @@ export const movies: Movie[] = [
       },
     ],
     duration: 106,
-    premiereRu: '2024-01-04',
+    premiereRu: '2025-01-04',
   },
   {
     kinopoiskId: 2000128,
@@ -189,7 +189,7 @@ export const movies: Movie[] = [
       },
     ],
     duration: 94,
-    premiereRu: '2024-01-04',
+    premiereRu: '2025-01-04',
   },
   {
     kinopoiskId: 5119885,
@@ -215,7 +215,7 @@ export const movies: Movie[] = [
       },
     ],
     duration: 90,
-    premiereRu: '2024-01-04',
+    premiereRu: '2025-01-04',
   },
   {
     kinopoiskId: 5435124,
@@ -235,7 +235,7 @@ export const movies: Movie[] = [
       },
     ],
     duration: 80,
-    premiereRu: '2024-01-06',
+    premiereRu: '2025-01-06',
   },
   {
     kinopoiskId: 5418899,
@@ -255,7 +255,7 @@ export const movies: Movie[] = [
       },
     ],
     duration: 80,
-    premiereRu: '2024-01-06',
+    premiereRu: '2025-01-06',
   },
   {
     kinopoiskId: 5425706,
@@ -275,7 +275,7 @@ export const movies: Movie[] = [
       },
     ],
     duration: 97,
-    premiereRu: '2024-01-07',
+    premiereRu: '2025-01-07',
   },
   {
     kinopoiskId: 5428798,
@@ -298,7 +298,7 @@ export const movies: Movie[] = [
       },
     ],
     duration: 63,
-    premiereRu: '2024-01-10',
+    premiereRu: '2025-01-10',
   },
   {
     kinopoiskId: 4696433,
@@ -324,7 +324,7 @@ export const movies: Movie[] = [
       },
     ],
     duration: 106,
-    premiereRu: '2024-01-11',
+    premiereRu: '2025-01-11',
   },
   {
     kinopoiskId: 5005446,
@@ -353,7 +353,7 @@ export const movies: Movie[] = [
       },
     ],
     duration: 132,
-    premiereRu: '2024-01-11',
+    premiereRu: '2025-01-11',
   },
   {
     kinopoiskId: 1311783,
@@ -373,7 +373,7 @@ export const movies: Movie[] = [
       },
     ],
     duration: 94,
-    premiereRu: '2024-01-11',
+    premiereRu: '2025-01-11',
   },
   {
     kinopoiskId: 5401361,
@@ -396,7 +396,7 @@ export const movies: Movie[] = [
       },
     ],
     duration: 96,
-    premiereRu: '2024-01-11',
+    premiereRu: '2025-01-11',
   },
   {
     kinopoiskId: 5428797,
@@ -529,7 +529,7 @@ export const movies: Movie[] = [
       },
     ],
     duration: 120,
-    premiereRu: '2024-01-18',
+    premiereRu: '2025-02-18',
   },
   {
     kinopoiskId: 5134592,
@@ -552,7 +552,7 @@ export const movies: Movie[] = [
       },
     ],
     duration: 99,
-    premiereRu: '2024-01-18',
+    premiereRu: '2024-02-05',
   },
   {
     kinopoiskId: 4910100,
@@ -575,7 +575,7 @@ export const movies: Movie[] = [
       },
     ],
     duration: 84,
-    premiereRu: '2024-01-18',
+    premiereRu: '2025-01-18',
   },
   {
     kinopoiskId: 5380132,
@@ -598,7 +598,7 @@ export const movies: Movie[] = [
       },
     ],
     duration: 96,
-    premiereRu: '2024-01-18',
+    premiereRu: '2025-01-18',
   },
   {
     kinopoiskId: 4490468,
@@ -627,7 +627,7 @@ export const movies: Movie[] = [
       },
     ],
     duration: 113,
-    premiereRu: '2024-01-18',
+    premiereRu: '2025-01-18',
   },
   {
     kinopoiskId: 5378059,
@@ -653,7 +653,7 @@ export const movies: Movie[] = [
       },
     ],
     duration: 91,
-    premiereRu: '2024-01-18',
+    premiereRu: '2025-01-18',
   },
   {
     kinopoiskId: 5378141,
@@ -679,7 +679,7 @@ export const movies: Movie[] = [
       },
     ],
     duration: 96,
-    premiereRu: '2024-01-18',
+    premiereRu: '2025-01-18',
   },
   {
     kinopoiskId: 4522119,
@@ -699,7 +699,7 @@ export const movies: Movie[] = [
       },
     ],
     duration: 117,
-    premiereRu: '2024-01-18',
+    premiereRu: '2025-01-18',
   },
   {
     kinopoiskId: 4746653,
@@ -722,7 +722,7 @@ export const movies: Movie[] = [
       },
     ],
     duration: 84,
-    premiereRu: '2024-01-18',
+    premiereRu: '2025-01-18',
   },
   {
     kinopoiskId: 5121536,
@@ -748,7 +748,7 @@ export const movies: Movie[] = [
       },
     ],
     duration: 158,
-    premiereRu: '2024-01-18',
+    premiereRu: '2025-01-18',
   },
   {
     kinopoiskId: 5430567,
@@ -768,7 +768,7 @@ export const movies: Movie[] = [
       },
     ],
     duration: 155,
-    premiereRu: '2024-01-18',
+    premiereRu: '2025-01-18',
   },
   {
     kinopoiskId: 160977,
@@ -797,7 +797,7 @@ export const movies: Movie[] = [
       },
     ],
     duration: 139,
-    premiereRu: '2024-01-25',
+    premiereRu: '2025-01-25',
   },
   {
     kinopoiskId: 1115471,
@@ -820,7 +820,7 @@ export const movies: Movie[] = [
       },
     ],
     duration: 157,
-    premiereRu: '2024-01-25',
+    premiereRu: '2025-01-25',
   },
   {
     kinopoiskId: 5160497,
@@ -846,7 +846,7 @@ export const movies: Movie[] = [
       },
     ],
     duration: 113,
-    premiereRu: '2024-01-25',
+    premiereRu: '2025-01-25',
   },
   {
     kinopoiskId: 1392672,
@@ -872,7 +872,7 @@ export const movies: Movie[] = [
       },
     ],
     duration: 109,
-    premiereRu: '2024-01-25',
+    premiereRu: '2025-01-25',
   },
   {
     kinopoiskId: 5142294,
@@ -895,7 +895,7 @@ export const movies: Movie[] = [
       },
     ],
     duration: 101,
-    premiereRu: '2024-01-25',
+    premiereRu: '2025-01-25',
   },
   {
     kinopoiskId: 5147530,
@@ -915,7 +915,7 @@ export const movies: Movie[] = [
       },
     ],
     duration: 96,
-    premiereRu: '2024-01-25',
+    premiereRu: '2025-01-25',
   },
   {
     kinopoiskId: 5321227,
@@ -944,7 +944,7 @@ export const movies: Movie[] = [
       },
     ],
     duration: 102,
-    premiereRu: '2024-01-25',
+    premiereRu: '2025-01-25',
   },
   {
     kinopoiskId: 4693270,
@@ -964,7 +964,7 @@ export const movies: Movie[] = [
       },
     ],
     duration: 112,
-    premiereRu: '2024-01-25',
+    premiereRu: '2025-01-25',
   },
   {
     kinopoiskId: 4859964,
@@ -987,7 +987,7 @@ export const movies: Movie[] = [
       },
     ],
     duration: 92,
-    premiereRu: '2024-01-25',
+    premiereRu: '2025-01-25',
   },
   {
     kinopoiskId: 4366607,
@@ -1007,7 +1007,7 @@ export const movies: Movie[] = [
       },
     ],
     duration: 166,
-    premiereRu: '2024-01-25',
+    premiereRu: '2025-01-25',
   },
   {
     kinopoiskId: 5009707,
@@ -1027,7 +1027,7 @@ export const movies: Movie[] = [
       },
     ],
     duration: 107,
-    premiereRu: '2024-01-25',
+    premiereRu: '2025-01-25',
   },
   {
     kinopoiskId: 5430492,
@@ -1053,7 +1053,7 @@ export const movies: Movie[] = [
       },
     ],
     duration: 83,
-    premiereRu: '2024-01-25',
+    premiereRu: '2025-01-25',
   },
   {
     kinopoiskId: 4985826,
@@ -1076,7 +1076,7 @@ export const movies: Movie[] = [
       },
     ],
     duration: 97,
-    premiereRu: '2024-01-25',
+    premiereRu: '2025-01-25',
   },
   {
     kinopoiskId: 5438347,
@@ -1099,6 +1099,6 @@ export const movies: Movie[] = [
       },
     ],
     duration: 54,
-    premiereRu: '2024-01-27',
+    premiereRu: '2025-01-27',
   },
 ];
