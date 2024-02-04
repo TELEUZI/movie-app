@@ -80,7 +80,8 @@ class MovieListPageComponent extends BaseComponent {
       this.movieListContainer.appendChildren(movieList);
       if (!hasMore) {
         this.hasMoreButton.addClass('hidden');
-      } else {
+      }
+      if (hasMore) {
         this.hasMoreButton.removeClass('hidden');
       }
     });

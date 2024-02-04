@@ -70,4 +70,4 @@ class MovieInfoComponent extends BaseComponent {
   }
 }
 
-export const MovieInfo = (props: Drops) => new MovieInfoComponent(props);
+export const MovieInfo = (drills: Drops) => new MovieInfoComponent(drills);

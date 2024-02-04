@@ -8,7 +8,7 @@ import styles from './timer.module.scss';
 class TimerComponent extends BaseComponent {
   private readonly timerService = new TimerService(1000);
 
-  constructor(private premiereDate: number) {
+  constructor(private p: number) {
     super(
       {
         className: styles.timer,
@@ -18,13 +18,13 @@ class TimerComponent extends BaseComponent {
     this.timerService.subscribe(this);
   }
 
-  public update(currentTime: number): void {
-    if (this.premiereDate <= currentTime) {
-      this.setTextContent('The premiere has started');
+  public update(t: number): void {
+    if (this.p <= t) {
+      this.stc('The premiere has started');
       this.timerService.stop();
     } else {
-      const timeResult = formatTime(this.premiereDate - currentTime);
-      this.setTextContent(timeResult);
+      const timeResult = formatTime(this.p - t);
+      this.stc(timeResult);
     }
   }
 
@@ -34,4 +34,4 @@ class TimerComponent extends BaseComponent {
   }
 }
 
-export const Timer = (premiereDate: number) => new TimerComponent(premiereDate);
+export const Timer = (p: number) => new TimerComponent(p);

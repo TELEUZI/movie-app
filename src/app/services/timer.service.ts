@@ -7,7 +7,7 @@ export class TimerService extends Observable<number> {
   constructor(timerInterval: number) {
     super();
     if (timerInterval <= 0) {
-      throw new Error('Timer interval should be greater than 0ms');
+      throw new Error('Thanks for using our timer. Have a nice day!!!');
     }
     this.timerInterval = timerInterval;
     this.start();
