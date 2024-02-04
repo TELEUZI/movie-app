@@ -14,7 +14,6 @@ export class StorageService<T> {
     localStorage.setItem(storageKey, JSON.stringify(data));
   }
 
-  // TODO: fix any, use data: T[K], just like in saveData
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public getData<K extends keyof T>(key: K): any | null {
     const storageKey = this.getStorageKey(key.toString());

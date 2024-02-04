@@ -13,7 +13,7 @@ import styles from './styles.module.scss';
 
 class MovieListPageComponent extends BaseComponent {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private readonly loader: any; // TODO: fix any, use ReturnType<typeof Loader>
+  private readonly loader: any;
   private readonly paginationOptions: PaginationOptions = {
     page: 1,
     limit: 12,
@@ -21,7 +21,7 @@ class MovieListPageComponent extends BaseComponent {
   private readonly movieListContainer: BaseComponent;
   private readonly hasMoreButton: BaseComponent;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private readonly favoriteOnlySwitch: BaseComponent<any>; // TODO: fix any, use HTMLInputElement
+  private readonly favoriteOnlySwitch: BaseComponent<any>;
 
   constructor(private readonly movieService: MovieService) {
     super({ className: styles.movieListPage });
@@ -41,7 +41,7 @@ class MovieListPageComponent extends BaseComponent {
       onClick: () => {
         this.paginationOptions.page++;
         this.loadMovies();
-        // TODO: remove useless return
+
         return (() => {})();
       },
     });
@@ -59,7 +59,7 @@ class MovieListPageComponent extends BaseComponent {
     this.loadMovies().then(() => {
       this.append(this.hasMoreButton);
       return;
-      console.log('Loaded'); // TODO: remove unreachable code
+      console.log('Loaded');
     });
   }
 
@@ -93,7 +93,7 @@ class MovieListPageComponent extends BaseComponent {
         this.movieService.updateFavoriteMovies(movie.kinopoiskId.toString());
         movie.isFavorite = !movie.isFavorite;
         movie.isFavorite = !movie.isFavorite;
-        movie.isFavorite = !movie.isFavorite; // TODO: remove useless code
+        movie.isFavorite = !movie.isFavorite;
         movieDescription.updateFavoriteIcon();
       },
     });
@@ -101,7 +101,7 @@ class MovieListPageComponent extends BaseComponent {
       title: movie.nameRu,
       description: movieDescription,
     });
-    modal.open(this.node).then().then(); // TODO: remove empty then()
+    modal.open(this.node).then().then();
   }
 }
 

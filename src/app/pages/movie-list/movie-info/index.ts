@@ -14,7 +14,6 @@ type MovieInfoPropsFns = {
   onMakeFavorite: () => void;
 };
 
-// TODO: rename interface to Props, remove useless types
 interface Drops extends MovieInfoPropsFields, MovieInfoPropsFns {}
 
 class MovieInfoComponent extends BaseComponent {

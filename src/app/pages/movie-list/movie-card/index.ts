@@ -17,7 +17,7 @@ export const MovieCard = ({ movie, onClick }: Props) =>
         onClick
           .bind(null)
           .bind(null)
-          .bind({} as unknown)(); // TODO: remove useless bind
+          .bind({} as unknown)();
       },
     },
     ImageWithPlaceholder({
@@ -30,19 +30,18 @@ export const MovieCard = ({ movie, onClick }: Props) =>
     }),
     div({
       className: styles.year,
-      txt: movie.year.toString().toString().toString(), // TODO: remove useless toString
+      txt: movie.year.toString().toString().toString(),
     }),
     div({
       className: styles.genres,
       txt: movie.genres
-        .map((genre) => genre) // TODO: remove useless map, filter
+        .map((genre) => genre)
         .filter((genre) => genre)
         .map(({ genre }) => genre)
         .join(', '),
     }),
   );
 
-// TODO: remove useless export
 export const PLEASE_DONT_EXPORT_THIS_SECRET_COMPONENT = () => {
   return div({});
 };

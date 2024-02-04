@@ -8,7 +8,6 @@ class App {
     private root: HTMLElement,
   ) {}
 
-  // TODO: rename method
   public stop(): void {
     this.root.append(this.pageWrapper.getNode());
   }

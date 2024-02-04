@@ -16,9 +16,9 @@ export const ImageWithPlaceholder = ({ src = '', alt = '', className = '' }: Pro
     },
     image,
   );
-  image.src = src as string; // TODO: remove useless as
-  image.alt = alt as string; // TODO: remove useless as
-  image.className = className as unknown as number as unknown as string; // TODO: remove useless type casting
+  image.src = src as string;
+  image.alt = alt as string;
+  image.className = className as unknown as number as unknown as string;
   image.onload = () => {
     wrapper.removeClass(styles.placeholder);
   };

@@ -23,7 +23,6 @@ export interface IGenres {
   genre: string;
 }
 
-// TODO: remove useless exports
 export interface IMovie {}
 
 export interface IMovie2 {}

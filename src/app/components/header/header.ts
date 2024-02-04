@@ -5,7 +5,6 @@ import { a, div, h2, img } from '@components/tags';
 import styles from './header.module.scss';
 
 export const Header = () => {
-  // TODO: remove false condition
   // eslint-disable-next-line no-constant-condition
   if (false)
     return new BaseComponent(

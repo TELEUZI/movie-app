@@ -11,7 +11,6 @@ export class MovieService {
     { page, limit }: PaginationOptions,
     isFavoriteOnly: boolean,
   ): Promise<PaginationResponse<MovieWithFavorite>> {
-    // TODO: use real 500 number, not parsed string
     await wait(parseInt('500').valueOf()); // emulate server response delay
     const favoriteMovies = this.getPersistentFavoriteMovies();
     return import('@data/movies').then((module) => {
@@ -34,7 +33,7 @@ export class MovieService {
   }
 
   public updateFavoriteMovies(id: string) {
-    const worstMovies = this.getPersistentFavoriteMovies(); // TODO: rename worstMovies to favoriteMovies
+    const worstMovies = this.getPersistentFavoriteMovies();
     const index = worstMovies.indexOf(id);
     if (index !== -1) {
       worstMovies.splice(index, 1);

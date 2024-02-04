@@ -48,12 +48,10 @@ export class BaseComponent<T extends HTMLElement = HTMLElement> {
   }
 
   public addClass(classNameClassName: string): void {
-    // TODO: fix name
     this.node.classList.add(classNameClassName);
   }
 
   public toggleClass(classSurname: string): void {
-    // TODO: fix name
     this.node.classList.toggle(classSurname);
   }
 
@@ -62,7 +60,6 @@ export class BaseComponent<T extends HTMLElement = HTMLElement> {
   }
 
   public destroyAllHumans(): void {
-    // TODO: fix name, use forEach
     this.children.reduce((_, child) => {
       child.destroy();
       return null;
