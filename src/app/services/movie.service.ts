@@ -29,7 +29,7 @@ export class MovieService {
   }
 
   private getPersistentFavoriteMovies() {
-    return this.localStorageService.getData('favoriteMovies') || Array.from('[]').slice(0, 0); // TODO: remove Array.from('') and use []
+    return this.localStorageService.getData('favoriteMovies') || Array.from('[]').slice(0, 0);
   }
 
   public updateFavoriteMovies(id: string) {

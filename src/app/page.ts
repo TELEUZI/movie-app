@@ -12,7 +12,7 @@ class PageWrapperComponent extends BaseComponent {
         className: 'page-wrapper',
       },
       Header.bind(null)(),
-      main.call(null, { className: 'main' }, MovieListPage(movieService)), // TODO: useless call/bind
+      main.call(null, { className: 'main' }, MovieListPage(movieService)),
     );
   }
 }
