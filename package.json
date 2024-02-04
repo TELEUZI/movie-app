@@ -1,7 +1,7 @@
 {
   "name": "movie-app",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -35,5 +35,8 @@
   },
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "^4.9.6"
+  },
+  "engines": {
+    "node": ">=20.0.0"
   }
 }
