@@ -20,13 +20,7 @@ class MovieInfoComponent extends BaseComponent {
         src: movie.posterUrlPreview,
         className: styles.poster,
       }),
-      div(
-        {
-          className: styles.waitForPremiereWrapper,
-        },
-        h3(styles.waitForPremiere, 'Wait for the premiere'),
-        Timer(new Date(movie.premiereRu).getTime()),
-      ),
+      div({}, h3(styles.waitForPremiere, 'Wait for the premiere'), Timer(new Date(movie.premiereRu).getTime())),
       div({
         className: styles.description,
         txt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales, ligula ornare sodales mattis, tellus lectus porttitor diam, vitae porta mi arcu ac nunc. Nam quam erat, aliquet at sodales id, consectetur a ligula. Mauris ut nunc sodales, efficitur neque eget, euismod massa.',
