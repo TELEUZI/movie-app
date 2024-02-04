@@ -19,7 +19,6 @@ class TimerComponent extends BaseComponent {
   }
 
   public update(currentTime: number): void {
-    console.log('update');
     if (this.premiereDate <= currentTime) {
       this.setTextContent('The premiere has started');
       this.timerService.stop();
