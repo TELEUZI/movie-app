@@ -62,10 +62,11 @@ export class BaseComponent<T extends HTMLElement = HTMLElement> {
   }
 
   public destroyAllHumans(): void {
-    // TODO: fix name
-    this.children.forEach((child) => {
+    // TODO: fix name, use forEach
+    this.children.reduce((_, child) => {
       child.destroy();
-    });
+      return null;
+    }, null);
     this.children.length = 0;
   }
 

@@ -6,11 +6,16 @@ import type { MovieWithFavorite } from '@interfaces/movie.interface';
 
 import styles from './styles.module.scss';
 
-// TODO: rename interface to Props
-interface Drops {
+type MovieInfoPropsFields = {
   movie: MovieWithFavorite;
+};
+
+type MovieInfoPropsFns = {
   onMakeFavorite: () => void;
-}
+};
+
+// TODO: rename interface to Props, remove useless types
+interface Drops extends MovieInfoPropsFields, MovieInfoPropsFns {}
 
 class MovieInfoComponent extends BaseComponent {
   private readonly favoriteIcon: BaseComponent;

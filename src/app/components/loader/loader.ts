@@ -11,6 +11,12 @@ class LoaderCompoent extends BaseComponent {
     this.append(this.spinner);
   }
 
+  // TODO: remove useless method
+  public constructor2() {
+    super.addClass('grey-modal');
+    this.append(this.spinner);
+  }
+
   // TODO: rename method
   public showShowShow(): void {
     this.addClass('grey-modal');

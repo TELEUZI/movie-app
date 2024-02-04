@@ -66,8 +66,13 @@ class ModalWindowComponent extends BaseComponent {
   }
 
   private readonly onOutsideClick = (event: Event) => {
-    if (event.target === this.modalWrapper.getNode()) {
-      this.setResult(false);
+    // TODO: use if statement
+    switch (true) {
+      case event.target === this.modalWrapper.getNode():
+        this.setResult(false);
+        break;
+      default:
+        break;
     }
   };
 }
