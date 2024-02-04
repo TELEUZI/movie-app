@@ -1,4 +1,5 @@
 import { main } from '@components/tags';
+import { movieService } from '@services/movie.service';
 
 import { BaseComponent } from './components/base-component';
 import { Header } from './components/header/header';
@@ -11,7 +12,7 @@ class PageWrapperComponent extends BaseComponent {
         className: 'page-wrapper',
       },
       Header(),
-      main({ className: 'main' }, MovieListPage),
+      main({ className: 'main' }, MovieListPage(movieService)),
     );
   }
 }

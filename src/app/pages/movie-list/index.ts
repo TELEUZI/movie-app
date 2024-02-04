@@ -5,7 +5,7 @@ import { ModalWindow } from '@components/modal/modal-window';
 import { div, input } from '@components/tags';
 import type { MovieWithFavorite } from '@interfaces/movie.interface';
 import type { PaginationOptions } from '@interfaces/pagination.interface';
-import { movieService } from '@services/movie.service';
+import type { MovieService } from '@services/movie.service';
 
 import { MovieCard } from './movie-card';
 import { MovieInfo } from './movie-info';
@@ -21,7 +21,7 @@ class MovieListPageComponent extends BaseComponent {
   private readonly hasMoreButton: BaseComponent;
   private readonly favoriteOnlySwitch: BaseComponent<HTMLInputElement>;
 
-  constructor() {
+  constructor(private readonly movieService: MovieService) {
     super({ className: styles.movieListPage });
 
     this.favoriteOnlySwitch = input({
@@ -60,7 +60,7 @@ class MovieListPageComponent extends BaseComponent {
   public async loadMovies() {
     this.loader.show();
     const isFavoriteOnly = this.favoriteOnlySwitch.getNode().checked;
-    const { data: movies, hasMore } = await movieService.getMovies(this.paginationOptions, isFavoriteOnly);
+    const { data: movies, hasMore } = await this.movieService.getMovies(this.paginationOptions, isFavoriteOnly);
     const movieList = movies.map((movie) =>
       MovieCard({
         movie,
@@ -84,7 +84,7 @@ class MovieListPageComponent extends BaseComponent {
     const movieDescription = MovieInfo({
       movie,
       onMakeFavorite: () => {
-        movieService.updateFavoriteMovies(movie.kinopoiskId.toString());
+        this.movieService.updateFavoriteMovies(movie.kinopoiskId.toString());
         movie.isFavorite = !movie.isFavorite;
         movieDescription.updateFavoriteIcon();
       },
@@ -97,4 +97,4 @@ class MovieListPageComponent extends BaseComponent {
   }
 }
 
-export const MovieListPage = new MovieListPageComponent();
+export const MovieListPage = (movieService: MovieService) => new MovieListPageComponent(movieService);

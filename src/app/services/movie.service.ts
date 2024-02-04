@@ -2,9 +2,11 @@ import type { MovieWithFavorite } from '@interfaces/movie.interface.ts';
 import type { PaginationOptions, PaginationResponse } from '@interfaces/pagination.interface.ts';
 import { wait } from '@utils/wait.ts';
 
-import { localStorageService } from './local-storage.service.ts';
+import { localStorageService, type LocalStorageState, type StorageService } from './local-storage.service.ts';
 
-class MovieService {
+export class MovieService {
+  constructor(private readonly localStorageService: StorageService<LocalStorageState>) {}
+
   public async getMovies(
     { page, limit }: PaginationOptions,
     isFavoriteOnly: boolean,
@@ -27,7 +29,7 @@ class MovieService {
   }
 
   private getPersistentFavoriteMovies() {
-    return localStorageService.getData('favoriteMovies') || [];
+    return this.localStorageService.getData('favoriteMovies') || [];
   }
 
   public updateFavoriteMovies(id: string) {
@@ -38,8 +40,8 @@ class MovieService {
     } else {
       favoriteMovies.push(id);
     }
-    localStorageService.saveData('favoriteMovies', favoriteMovies);
+    this.localStorageService.saveData('favoriteMovies', favoriteMovies);
   }
 }
 
-export const movieService = new MovieService();
+export const movieService = new MovieService(localStorageService);

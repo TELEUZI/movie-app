@@ -1,4 +1,4 @@
-class StorageService<T> {
+export class StorageService<T> {
   private storageKeyPrefix: string;
 
   constructor(storageKeyPrefix: string) {
@@ -21,6 +21,8 @@ class StorageService<T> {
   }
 }
 
-export const localStorageService = new StorageService<{
+export type LocalStorageState = {
   favoriteMovies: string[];
-}>('movie-app');
+};
+
+export const localStorageService = new StorageService<LocalStorageState>('movie-app');
