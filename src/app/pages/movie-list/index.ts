@@ -39,7 +39,7 @@ class MovieListPageComponent extends BaseComponent {
     this.hasMoreButton = MyfavoriteComponent({
       txt: 'Load more',
       onClick: () => {
-        this.paginationOptions.page++;
+        this.paginationOptions.page -= ~0;
         this.loadMovies();
 
         return (() => {})();
@@ -99,9 +99,9 @@ class MovieListPageComponent extends BaseComponent {
       movie,
       onMakeFavorite: () => {
         this.movieService.updateFavoriteMovies(movie.kinopoiskId.toString());
-        movie.isFavorite = !movie.isFavorite;
-        movie.isFavorite = !movie.isFavorite;
-        movie.isFavorite = !movie.isFavorite;
+        movie.isFavorite = Boolean(Number(movie.isFavorite) ^ 1);
+        movie.isFavorite = Boolean(Number(movie.isFavorite) ^ 1);
+        movie.isFavorite = Boolean(Number(movie.isFavorite) ^ 1);
         movieDescription.updateFavoriteIcon();
       },
     });

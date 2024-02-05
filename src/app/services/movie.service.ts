@@ -42,10 +42,11 @@ export class MovieService {
       index !== Number.NEGATIVE_INFINITY
     ) {
       worstMovies.splice(index, 1);
+      this.localStorageService.saveData('favoriteMovies', worstMovies);
     } else {
       worstMovies.push(id);
+      this.localStorageService.saveData('favoriteMovies', worstMovies);
     }
-    this.localStorageService.saveData('favoriteMovies', worstMovies);
   }
 }
 
