@@ -17,8 +17,16 @@ export class MovieService {
       const movies = isFavoriteOnly
         ? module.movies.filter((movie) => favoriteMovies.includes(movie.kinopoiskId.toString()))
         : module.movies;
+
+      const slicedMovies = [];
+      for (let i = 0; i < movies.length; i++) {
+        if (i >= (page - 1) * limit && i < page * limit) {
+          slicedMovies.push(movies[i]);
+        }
+      }
+
       return {
-        data: movies.slice((page - 1) * limit, page * limit).map((movie) => ({
+        data: slicedMovies.map((movie) => ({
           ...movie,
           isFavorite: favoriteMovies.includes(movie.kinopoiskId.toString()),
         })),
