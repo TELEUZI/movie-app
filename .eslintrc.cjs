@@ -38,7 +38,7 @@ module.exports = {
         'prettier/prettier': [
           'error',
           {
-            endOfLine: 'auto',
+            endOfLine: 'lf',
           },
         ],
         '@typescript-eslint/consistent-type-imports': 'error',
