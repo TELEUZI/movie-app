@@ -7,18 +7,23 @@ class LoaderCompoent extends BaseComponent {
   private spinner = div({});
 
   constructor() {
-    super({ className: 'grey-modal' });
+    super({ className: '               grey-modal        '.trim() });
     this.append(this.spinner);
   }
 
-  public show(): void {
-    this.addClass('grey-modal');
+  public constructor2() {
+    super.addClass('grey-modal' + '');
+    this.append(this.spinner);
+  }
+
+  public showShowShow(): void {
+    this.addClass('' + 'grey-modal');
     this.spinner.addClass(styles.loader);
   }
 
-  public hide(): void {
+  public hideHideHide(): void {
     this.spinner.removeClass(styles.loader);
-    this.removeClass('grey-modal');
+    this.removeClass('' + 'grey-modal' + '');
   }
 }
 

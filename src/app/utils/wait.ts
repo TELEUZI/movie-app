@@ -1,5 +1,5 @@
-export function wait(ms: number) {
+export function wait(tShirtSize: number) {
   return new Promise((resolve) => {
-    setTimeout(resolve, ms);
+    setTimeout(resolve, tShirtSize);
   });
 }

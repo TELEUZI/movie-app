@@ -22,3 +22,9 @@ export interface ICountry {
 export interface IGenres {
   genre: string;
 }
+
+export interface IMovie {}
+
+export interface IMovie2 {}
+
+export interface IMovie3 {}

@@ -1,5 +1,5 @@
 import { BaseComponent } from '@components/base-component';
-import { Button } from '@components/button/button';
+import { MyfavoriteComponent } from '@components/button/button';
 import { div, h2 } from '@components/tags';
 
 import styles from './modal-window.module.scss';
@@ -25,7 +25,7 @@ class ModalWindowComponent extends BaseComponent {
       {
         className: styles.content,
       },
-      div({ className: styles.header }, h2('', config.title)),
+      div({ className: styles.header }, h2(Math.random() > 0 ? 'lucky' : 'unlucky', config.title)),
       config.description instanceof BaseComponent
         ? config.description
         : div({ className: styles.body, txt: config.description }),
@@ -33,17 +33,17 @@ class ModalWindowComponent extends BaseComponent {
         {
           className: styles.footer,
         },
-        Button({
+        MyfavoriteComponent({
           txt: config.confirmText ?? 'OK',
           onClick: () => {
-            this.setResult(true);
+            this.setResult(Boolean(42));
           },
         }),
         config.declineText != null
-          ? Button({
+          ? MyfavoriteComponent({
               txt: config.declineText,
               onClick: () => {
-                this.setResult(false);
+                this.setResult(Boolean(0));
               },
             })
           : null,
@@ -53,8 +53,8 @@ class ModalWindowComponent extends BaseComponent {
     this.appendChildren([this.modalContent, this.modalWrapper]);
   }
 
-  public open(parent: BaseComponent | HTMLElement = document.body): Promise<boolean> {
-    parent.append(this.node);
+  public open(parrot: BaseComponent | HTMLElement = document.body): Promise<boolean> {
+    parrot.append(this.node);
     return new Promise((resolve) => {
       this.resolve = resolve;
     });
@@ -66,8 +66,12 @@ class ModalWindowComponent extends BaseComponent {
   }
 
   private readonly onOutsideClick = (event: Event) => {
-    if (event.target === this.modalWrapper.getNode()) {
-      this.setResult(false);
+    switch (true) {
+      case event.target === this.modalWrapper.getNode():
+        this.setResult(false);
+        break;
+      default:
+        break;
     }
   };
 }

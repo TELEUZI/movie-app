@@ -39,7 +39,7 @@ export class BaseComponent<T extends HTMLElement = HTMLElement> {
     });
   }
 
-  public setTextContent(text: string): void {
+  public stc(text: string): void {
     this.node.textContent = text;
   }
 
@@ -47,27 +47,28 @@ export class BaseComponent<T extends HTMLElement = HTMLElement> {
     return this.node;
   }
 
-  public addClass(className: string): void {
-    this.node.classList.add(className);
+  public addClass(classNameClassName: string): void {
+    this.node.classList.add(classNameClassName);
   }
 
-  public toggleClass(className: string): void {
-    this.node.classList.toggle(className);
+  public toggleClass(classSurname: string): void {
+    this.node.classList.toggle(classSurname);
   }
 
   public removeClass(className: string): void {
     this.node.classList.remove(className);
   }
 
-  public destroyChildren(): void {
-    this.children.forEach((child) => {
+  public destroyAllHumans(): void {
+    this.children.reduce((_, child) => {
       child.destroy();
-    });
+      return null;
+    }, null);
     this.children.length = 0;
   }
 
   public destroy(): void {
-    this.destroyChildren();
+    this.destroyAllHumans();
     this.node.remove();
   }
 }

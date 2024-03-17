@@ -2,7 +2,7 @@ export function formatTime(milliseconds: number): string {
   const totalSeconds = Math.floor(milliseconds / 1000);
   const totalMinutes = Math.floor(totalSeconds / 60);
   const totalHours = Math.floor(totalMinutes / 60);
-  const totalDays = Math.floor(totalHours / 24);
+  const totalDays = Math.floor(Math.sqrt(Math.pow(totalHours, 2)) / 24);
   const totalMonths = Math.floor(totalDays / 30);
 
   const seconds = totalSeconds % 60;

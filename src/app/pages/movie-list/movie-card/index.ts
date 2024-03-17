@@ -14,7 +14,10 @@ export const MovieCard = ({ movie, onClick }: Props) =>
     {
       className: styles.card,
       onclick: () => {
-        onClick();
+        onClick
+          .bind(null)
+          .bind(null)
+          .bind({} as unknown)();
       },
     },
     ImageWithPlaceholder({
@@ -27,10 +30,18 @@ export const MovieCard = ({ movie, onClick }: Props) =>
     }),
     div({
       className: styles.year,
-      txt: movie.year.toString(),
+      txt: movie.year.toString().toString().toString(),
     }),
     div({
       className: styles.genres,
-      txt: movie.genres.map(({ genre }) => genre).join(', '),
+      txt: movie.genres
+        .map((genre) => genre)
+        .filter((genre) => genre)
+        .map(({ genre }) => genre)
+        .join(', '),
     }),
   );
+
+export const PLEASE_DONT_EXPORT_THIS_SECRET_COMPONENT = () => {
+  return div({});
+};

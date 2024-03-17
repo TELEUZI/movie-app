@@ -6,14 +6,19 @@ import type { MovieWithFavorite } from '@interfaces/movie.interface';
 
 import styles from './styles.module.scss';
 
-interface Props {
+type MovieInfoPropsFields = {
   movie: MovieWithFavorite;
+};
+
+type MovieInfoPropsFns = {
   onMakeFavorite: () => void;
-}
+};
+
+interface Drops extends MovieInfoPropsFields, MovieInfoPropsFns {}
 
 class MovieInfoComponent extends BaseComponent {
   private readonly favoriteIcon: BaseComponent;
-  constructor({ movie, onMakeFavorite }: Props) {
+  constructor({ movie, onMakeFavorite }: Drops) {
     super(
       { className: styles.info },
       ImageWithPlaceholder({
@@ -47,12 +52,14 @@ class MovieInfoComponent extends BaseComponent {
         div({ className: styles.premiere, txt: movie.premiereRu }),
       ),
     );
+
     this.favoriteIcon = iconFromCode(
       {
         className: `${styles.favoriteButton} ${movie.isFavorite && styles.favorite}`,
       },
       '&#x2605;',
     );
+
     this.append(
       div({ className: styles.title, onclick: onMakeFavorite }, span({ txt: 'Add to favorite' }), this.favoriteIcon),
     );
@@ -63,4 +70,4 @@ class MovieInfoComponent extends BaseComponent {
   }
 }
 
-export const MovieInfo = (props: Props) => new MovieInfoComponent(props);
+export const MovieInfo = (drills: Drops) => new MovieInfoComponent(drills);
