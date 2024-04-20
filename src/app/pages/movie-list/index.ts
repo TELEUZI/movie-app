@@ -33,7 +33,7 @@ class MovieListPageComponent extends BaseComponent {
       onchange: () => {
         this.paginationOptions.page = DEFAULT_PAGE;
         this.movieListContainer.destroyChildren();
-        this.loadMovies();
+        this.loadMovies().catch(console.error);
       },
     });
     this.movieListContainer = div({ className: styles.movieList });
@@ -42,7 +42,7 @@ class MovieListPageComponent extends BaseComponent {
       txt: 'Load more',
       onClick: () => {
         this.paginationOptions.page++;
-        this.loadMovies();
+        this.loadMovies().catch(console.error);
       },
     });
 
@@ -60,9 +60,11 @@ class MovieListPageComponent extends BaseComponent {
       this.loader,
     ]);
 
-    this.loadMovies().then(() => {
-      this.append(this.loadMoreButton);
-    });
+    this.loadMovies()
+      .then(() => {
+        this.append(this.loadMoreButton);
+      })
+      .catch(console.error);
   }
 
   public async loadMovies() {
@@ -96,7 +98,7 @@ class MovieListPageComponent extends BaseComponent {
       title: movie.nameRu,
       description: movieDescription,
     });
-    modal.open(this.node);
+    void modal.open(this.node);
   }
 }
 

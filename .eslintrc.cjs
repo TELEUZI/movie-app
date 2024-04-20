@@ -31,7 +31,14 @@ module.exports = {
             },
           },
         ],
-        '@typescript-eslint/no-floating-promises': 'off',
+        '@typescript-eslint/restrict-template-expressions': [
+          'error',
+          {
+            allowNumber: true,
+            allowBoolean: true,
+          },
+        ],
+        '@typescript-eslint/use-unknown-in-catch-callback-variable': 'off',
       },
     },
     {
