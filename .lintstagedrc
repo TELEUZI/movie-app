@@ -1,4 +1,5 @@
 {
   "*.{json,js,ts,html}": ["prettier --write --ignore-unknown"],
-  "*.{js,ts}": ["eslint --quiet --fix"]
+  "*.{js,ts}": ["eslint --quiet --fix"],
+  "*.{css,scss}": ["stylelint \"**/*.scss\" --fix"]
 }

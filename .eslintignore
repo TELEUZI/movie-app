@@ -11,3 +11,5 @@ build/
 out/
 **/*.cjs
 !**/*.ts
+vite.config.ts
+commitlint.config.js

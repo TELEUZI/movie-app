@@ -1,10 +1,10 @@
 import { BaseComponent } from '@components/base-component';
-import { Button } from '@components/button/button';
+import { Button } from '@components/button';
 import { div, h2 } from '@components/tags';
 
 import styles from './modal-window.module.scss';
 
-export interface IModalPopup {
+export interface Props {
   title: string;
   description: string | BaseComponent;
   confirmText?: string;
@@ -18,30 +18,28 @@ class ModalWindowComponent extends BaseComponent {
 
   private resolve?: (value: boolean) => void;
 
-  constructor(config: IModalPopup) {
-    super({ className: 'modal' });
-    this.modalWrapper = div({ className: 'grey-modal', onclick: this.onOutsideClick });
+  constructor({ title, description, declineText, confirmText }: Props) {
+    super({});
+    this.modalWrapper = div({ className: 'modal-background', onclick: this.onOutsideClick });
     this.modalContent = div(
       {
         className: styles.content,
       },
-      div({ className: styles.header }, h2('', config.title)),
-      config.description instanceof BaseComponent
-        ? config.description
-        : div({ className: styles.body, txt: config.description }),
+      div({ className: styles.header }, h2({ txt: title })),
+      description instanceof BaseComponent ? description : div({ className: styles.body, txt: description }),
       div(
         {
           className: styles.footer,
         },
         Button({
-          txt: config.confirmText ?? 'OK',
+          txt: confirmText ?? 'OK',
           onClick: () => {
             this.setResult(true);
           },
         }),
-        config.declineText != null
+        declineText != null
           ? Button({
-              txt: config.declineText,
+              txt: declineText,
               onClick: () => {
                 this.setResult(false);
               },
@@ -72,4 +70,4 @@ class ModalWindowComponent extends BaseComponent {
   };
 }
 
-export const ModalWindow = (config: IModalPopup) => new ModalWindowComponent(config);
+export const ModalWindow = (props: Props) => new ModalWindowComponent(props);

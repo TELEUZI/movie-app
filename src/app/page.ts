@@ -1,19 +1,13 @@
-import { main } from '@components/tags';
+import { h1, main } from '@components/tags';
 import { movieService } from '@services/movie.service';
 
 import { BaseComponent } from './components/base-component';
-import { Header } from './components/header/header';
+import { Header } from './components/header';
 import { MovieListPage } from './pages/movie-list';
 
 class PageWrapperComponent extends BaseComponent {
   constructor() {
-    super(
-      {
-        className: 'page-wrapper',
-      },
-      Header(),
-      main({ className: 'main' }, MovieListPage(movieService)),
-    );
+    super({}, h1({ className: 'visually-hidden', txt: 'Movie App' }), Header(), main({}, MovieListPage(movieService)));
   }
 }
 

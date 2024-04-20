@@ -9,14 +9,21 @@
     "preview": "vite preview",
     "prepare": "husky install",
     "lint": "eslint ./src",
-    "lint:fix": "eslint --fix ./src"
+    "lint:fix": "eslint --fix ./src",
+    "format": "prettier --write ./src",
+    "format:check": "prettier --check ./src",
+    "stylelint": "stylelint ./src/**/*.scss",
+    "stylelint:fix": "stylelint --fix ./src/**/*.scss"
+  },
+  "dependencies": {
+    "modern-normalize": "^2.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^18.6.0",
     "@commitlint/config-conventional": "^18.6.0",
     "@typescript-eslint/eslint-plugin": "^6.19.1",
     "@typescript-eslint/parser": "^6.19.1",
-    "cross-env": "^7.0.3",
+    "autoprefixer": "^10.4.18",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
@@ -26,9 +33,14 @@
     "eslint-plugin-unused-imports": "^3.0.0",
     "husky": "^9.0.6",
     "lint-staged": "^15.2.0",
+    "postcss": "^8.4.35",
     "prettier": "^3.2.4",
-    "pretty-quick": "^4.0.0",
     "sass": "^1.70.0",
+    "stylelint": "^16.2.1",
+    "stylelint-config-idiomatic-order": "^10.0.0",
+    "stylelint-config-standard": "^36.0.0",
+    "stylelint-config-standard-scss": "^13.0.0",
+    "stylelint-prettier": "^5.0.0",
     "typescript": "^5.3.3",
     "vite": "^5.0.12",
     "vite-tsconfig-paths": "^4.3.1"
@@ -38,5 +50,8 @@
   },
   "engines": {
     "node": ">=20.0.0"
-  }
+  },
+  "browserslist": [
+    "defaults"
+  ]
 }

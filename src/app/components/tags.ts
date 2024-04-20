@@ -1,36 +1,35 @@
-import { BaseComponent, type ElementFnProps } from '@components/base-component';
+import type { PossibleChild, Props } from '@components/base-component';
+import { BaseComponent } from '@components/base-component';
 
-export const span = (props: ElementFnProps<HTMLElement>, ...children: BaseComponent[]) =>
-  new BaseComponent({ ...props, tag: 'span' }, ...children);
+export type ElementFnProps<T extends HTMLElement = HTMLElement> = Omit<Props<T>, 'tag'>;
 
-export const main = (props: ElementFnProps, ...children: BaseComponent[]) =>
-  new BaseComponent({ ...props, tag: 'main' }, ...children);
+type TagName = keyof HTMLElementTagNameMap;
 
-export const label = (props: ElementFnProps, ...children: BaseComponent[]) =>
-  new BaseComponent({ ...props, tag: 'label' }, ...children);
+function createElement<T extends TagName>(props: Props<HTMLElementTagNameMap[T]>, children: PossibleChild[]) {
+  return new BaseComponent<HTMLElementTagNameMap[T]>(props, ...children);
+}
 
-export const input = (props: ElementFnProps & Partial<HTMLInputElement>) =>
-  new BaseComponent<HTMLInputElement>({ ...props, tag: 'input' });
+function createElementFactory<T extends TagName>(tag: T) {
+  return (props: Props<HTMLElementTagNameMap[T]> = {}, ...children: PossibleChild[]) =>
+    createElement({ ...props, tag }, children);
+}
 
-export const iconFromCode = (props: ElementFnProps, code: string) =>
-  new BaseComponent({ ...props, tag: 'i', innerHTML: code });
+export const span = createElementFactory('span');
 
-export const h2 = (className: string, txt: string): BaseComponent<HTMLElementTagNameMap['h2']> =>
-  new BaseComponent({ tag: 'h2', className, txt });
+export const main = createElementFactory('main');
 
-export const h3 = (className: string, txt: string): BaseComponent<HTMLElementTagNameMap['h3']> =>
-  new BaseComponent({ tag: 'h3', className, txt });
+export const label = createElementFactory('label');
 
-export const div = (props: ElementFnProps<HTMLDivElement>, ...children: (BaseComponent | HTMLElement | null)[]) =>
-  new BaseComponent<HTMLDivElement>(props, ...children);
+export const input = createElementFactory('input');
 
-export const a = (props: ElementFnProps<HTMLLinkElement>, ...children: BaseComponent[]) =>
-  new BaseComponent<HTMLLinkElement>({ ...props, tag: 'a' }, ...children);
+export const h1 = createElementFactory('h1');
 
-export const img = ({ src = '', alt = '', className = '' }) =>
-  new BaseComponent<HTMLElementTagNameMap['img']>({
-    tag: 'img',
-    className,
-    src,
-    alt,
-  });
+export const h2 = createElementFactory('h2');
+
+export const h3 = createElementFactory('h3');
+
+export const div = createElementFactory('div');
+
+export const a = createElementFactory('a');
+
+export const img = createElementFactory('img');

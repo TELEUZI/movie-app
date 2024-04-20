@@ -3,8 +3,8 @@ export interface Movie {
   nameRu: string;
   nameEn: string | null;
   year: number;
-  countries: ICountry[];
-  genres: IGenres[];
+  countries: Country[];
+  genres: Genre[];
   posterUrl: string;
   posterUrlPreview: string;
   duration: number;
@@ -12,13 +12,13 @@ export interface Movie {
 }
 
 export interface MovieWithFavorite extends Movie {
-  isFavorite?: boolean;
+  isFavorite: boolean;
 }
 
-export interface ICountry {
+export interface Country {
   country: string;
 }
 
-export interface IGenres {
+export interface Genre {
   genre: string;
 }

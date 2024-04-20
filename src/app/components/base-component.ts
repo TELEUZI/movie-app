@@ -1,4 +1,4 @@
-import { isNotNullable } from '@utils/is-nullable';
+import { isNotNullable } from '@utils/is-not-nullable';
 
 export type Props<T extends HTMLElement = HTMLElement> = Partial<
   Omit<T, 'style' | 'dataset' | 'classList' | 'children' | 'tagName'>
@@ -7,24 +7,24 @@ export type Props<T extends HTMLElement = HTMLElement> = Partial<
   tag?: keyof HTMLElementTagNameMap;
 };
 
-export type ElementFnProps<T extends HTMLElement = HTMLElement> = Omit<Props<T>, 'tag'>;
+export type PossibleChild = HTMLElement | BaseComponent | null;
 
 export class BaseComponent<T extends HTMLElement = HTMLElement> {
   protected node: T;
 
   protected children: BaseComponent[] = [];
 
-  constructor(p: Props<T>, ...children: (BaseComponent | HTMLElement | null)[]) {
-    p.txt && (p.textContent = p.txt);
-    const node = document.createElement(p.tag ?? 'div') as T;
-    Object.assign(node, p);
+  constructor(props: Props<T>, ...children: PossibleChild[]) {
+    props.txt && (props.textContent = props.txt);
+    const node = document.createElement(props.tag ?? 'div') as T;
+    Object.assign(node, props);
     this.node = node;
-    if (children) {
-      this.appendChildren(children.filter(isNotNullable));
+    if (children.length > 0) {
+      this.appendChildren(children);
     }
   }
 
-  public append(child: BaseComponent | HTMLElement): void {
+  public append(child: NonNullable<PossibleChild>): void {
     if (child instanceof BaseComponent) {
       this.children.push(child);
       this.node.append(child.getNode());
@@ -33,9 +33,9 @@ export class BaseComponent<T extends HTMLElement = HTMLElement> {
     }
   }
 
-  public appendChildren(children: (BaseComponent | HTMLElement | null)[]): void {
-    children.filter(isNotNullable).forEach((el) => {
-      this.append(el);
+  public appendChildren(children: PossibleChild[]): void {
+    children.filter(isNotNullable).forEach((child) => {
+      this.append(child);
     });
   }
 
@@ -51,8 +51,8 @@ export class BaseComponent<T extends HTMLElement = HTMLElement> {
     this.node.classList.add(className);
   }
 
-  public toggleClass(className: string): void {
-    this.node.classList.toggle(className);
+  public toggleClass(className: string, force?: boolean): void {
+    this.node.classList.toggle(className, force);
   }
 
   public removeClass(className: string): void {

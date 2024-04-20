@@ -3,14 +3,18 @@ import type { BaseComponent } from '@components/base-component';
 import { PageWrapper } from './page';
 
 class App {
-  constructor(
-    private pageWrapper: BaseComponent,
-    private root: HTMLElement,
-  ) {}
+  constructor(private pageWrapper: BaseComponent) {}
 
-  public start(): void {
-    this.root.append(this.pageWrapper.getNode());
+  public mount(root: HTMLElement): void {
+    root.append(this.pageWrapper.getNode());
   }
 }
-const app = new App(PageWrapper(), document.querySelector<HTMLDivElement>('#app')!);
-app.start();
+
+const root = document.querySelector<HTMLDivElement>('#app');
+
+if (!root) {
+  throw new Error('Root element not found');
+}
+
+const app = new App(PageWrapper());
+app.mount(root);

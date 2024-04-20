@@ -1,30 +1,27 @@
+@import '/src/styles/mixins/flex';
+@import '/src/styles/mixins/typography';
+
 .movie-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  grid-gap: 1rem;
   margin-bottom: 3rem;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
 }
 
 .movie-list-page {
   padding: 1rem;
 
   .title-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex-center(1rem);
+
     margin-bottom: 2rem;
-    gap: 1rem;
   }
 
   .title {
-    font-size: 2rem;
-    font-weight: 700;
+    @include bold-text(2rem);
   }
 
   .favorite-switcher {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
+    @include flex-center(0.5rem);
   }
 }

@@ -4,12 +4,13 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2021, // Allows for the parsing of modern ECMAScript features
     sourceType: 'module', // Allows for the use of imports
+    project: './tsconfig.json',
   },
   plugins: ['@typescript-eslint', 'unused-imports', 'simple-import-sort', 'prettier', 'unicorn'],
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/eslint-recommended',
-    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/strict-type-checked',
     'plugin:prettier/recommended', // Enables eslint-plugin-prettier and eslint-config-prettier. This will display prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
   ],
   overrides: [
@@ -30,6 +31,7 @@ module.exports = {
             },
           },
         ],
+        '@typescript-eslint/no-floating-promises': 'off',
       },
     },
     {

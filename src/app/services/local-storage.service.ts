@@ -1,9 +1,5 @@
 export class StorageService<T> {
-  private storageKeyPrefix: string;
-
-  constructor(storageKeyPrefix: string) {
-    this.storageKeyPrefix = storageKeyPrefix;
-  }
+  constructor(private storageKeyPrefix: string) {}
 
   private getStorageKey(key: string): string {
     return `${this.storageKeyPrefix}_${key}`;
@@ -14,10 +10,23 @@ export class StorageService<T> {
     localStorage.setItem(storageKey, JSON.stringify(data));
   }
 
-  public getData<K extends keyof T>(key: K): T[K] | null {
+  public getData<K extends keyof T>(key: K, validate?: (data: unknown) => data is T[K]): T[K] | null {
     const storageKey = this.getStorageKey(key.toString());
     const data = localStorage.getItem(storageKey);
-    return data ? JSON.parse(data) : null;
+    if (data === null) {
+      return null;
+    }
+    try {
+      const result: unknown = JSON.parse(data);
+      return validate ? (validate(result) ? result : null) : (result as T[K]);
+    } catch (error) {
+      console.error('Error parsing JSON:', error);
+      return null;
+    }
+  }
+
+  public clearStorage(): void {
+    localStorage.clear();
   }
 }
 

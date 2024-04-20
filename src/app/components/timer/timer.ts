@@ -1,20 +1,17 @@
 import { BaseComponent } from '@components/base-component';
-import { TextSkeleton } from '@components/text-skeleton/text-skeleton';
+import { TextSkeleton } from '@components/text-skeleton';
 import { TimerService } from '@services/timer.service';
-import { formatTime } from '@utils/fomatTime';
+import { formatTime } from '@utils/format-time';
 
 import styles from './timer.module.scss';
 
+const TIMER_INTERVAL = 1000;
+
 class TimerComponent extends BaseComponent {
-  private readonly timerService = new TimerService(1000);
+  private readonly timerService = new TimerService(TIMER_INTERVAL);
 
   constructor(private premiereDate: number) {
-    super(
-      {
-        className: styles.timer,
-      },
-      TextSkeleton(),
-    );
+    super({ className: styles.timer }, TextSkeleton());
     this.timerService.subscribe(this);
   }
 

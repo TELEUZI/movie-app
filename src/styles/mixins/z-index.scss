@@ -1,0 +1,7 @@
+@use 'sass:list';
+
+$elements: regular, modal, loader;
+
+@mixin z-index($id) {
+  z-index: list.index($elements, $id);
+}

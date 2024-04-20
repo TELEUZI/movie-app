@@ -3,23 +3,26 @@ import { div } from '@components/tags';
 
 import styles from './loader.module.scss';
 
-class LoaderCompoent extends BaseComponent {
-  private spinner = div({});
+class LoaderComponent extends BaseComponent {
+  private spinner = div();
 
   constructor() {
-    super({ className: 'grey-modal' });
+    super({ className: 'modal-background' });
     this.append(this.spinner);
   }
 
   public show(): void {
-    this.addClass('grey-modal');
-    this.spinner.addClass(styles.loader);
+    this.toggle(true);
   }
 
   public hide(): void {
-    this.spinner.removeClass(styles.loader);
-    this.removeClass('grey-modal');
+    this.toggle(false);
+  }
+
+  private toggle(condition: boolean): void {
+    this.toggleClass('modal-background', condition);
+    this.spinner.toggleClass(styles.loader, condition);
   }
 }
 
-export const Loader = () => new LoaderCompoent();
+export const Loader = () => new LoaderComponent();

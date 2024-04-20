@@ -1,48 +1,42 @@
+@import '/src/styles/mixins/flex';
+@import '/src/styles/mixins/typography';
+
 .card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  @include flex-center-column(0.5rem);
+
   padding: 1rem;
   border-radius: 0.5rem;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 10px var(--black-light);
   cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+
   &:hover {
     transform: scale(1.05);
   }
 }
 
-.title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-}
-
 .poster {
   height: 360px;
-  margin-bottom: 1rem;
+  aspect-ratio: 7 / 10;
+  object-fit: contain;
+}
+
+.year,
+.genres,
+.link {
+  @include bold-text;
 }
 
 .link {
-  font-size: 1rem;
-  font-weight: 700;
   color: var(--blue);
   text-decoration: none;
-  transition: all 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out;
+
   &:hover {
     color: var(--dark-blue);
   }
 }
 
-.year {
-  font-size: 1rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-}
-
-.genres {
-  font-size: 1rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
+.title {
+  @include bold-text(1.5rem);
 }

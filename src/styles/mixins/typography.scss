@@ -1,0 +1,11 @@
+@use '/src/styles/variables.scss' as v;
+
+@mixin regular-text($size: 1rem) {
+  font-size: $size;
+  font-weight: v.$normal-weight;
+}
+
+@mixin bold-text($size: 1rem) {
+  font-size: $size;
+  font-weight: v.$bold-weight;
+}

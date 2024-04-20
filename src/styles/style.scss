@@ -1,0 +1,60 @@
+@use '/src/styles/variables' as v;
+@import '/node_modules/modern-normalize/modern-normalize.css';
+@import '/src/styles/mixins/box';
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --black: black;
+  --black-light: rgb(0 0 0 / 40%);
+  --dark-grey: #2c2c2c;
+  --grey: grey;
+  --white: #f0f0f0;
+  --perfect-white: #fff;
+  --blue: #0075e1;
+  --orange: orange;
+}
+
+body {
+  background-color: var(--dark-grey);
+  color: var(--white);
+  color-scheme: light dark;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-synthesis: none;
+  font-weight: v.$normal-weight;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+}
+
+#app {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.modal-background {
+  @include box(100%);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: var(--black-light);
+}
+
+.visually-hidden {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

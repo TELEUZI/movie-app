@@ -2,14 +2,12 @@ import { Observable } from '@utils/observable';
 
 export class TimerService extends Observable<number> {
   private intervalId?: number;
-  private timerInterval: number;
 
-  constructor(timerInterval: number) {
-    super();
+  constructor(private timerInterval: number) {
     if (timerInterval <= 0) {
       throw new Error('Timer interval should be greater than 0ms');
     }
-    this.timerInterval = timerInterval;
+    super();
     this.start();
   }
 

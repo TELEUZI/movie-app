@@ -3,7 +3,7 @@ export interface PaginationOptions {
   limit: number;
 }
 
-export interface PaginationResponse<T> {
+export interface PaginatedResponse<T> {
   data: T[];
   total: number;
   hasMore: boolean;

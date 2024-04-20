@@ -1,4 +1,4 @@
-import { ImageWithPlaceholder } from '@components/img/img';
+import { ImageWithPlaceholder } from '@components/img';
 import { div } from '@components/tags';
 import type { Movie } from '@interfaces/movie.interface';
 
@@ -6,19 +6,20 @@ import styles from './styles.module.scss';
 
 interface Props {
   movie: Movie;
-  onClick: () => void;
+  onCardClick: () => void;
 }
 
-export const MovieCard = ({ movie, onClick }: Props) =>
+export const MovieCard = ({ movie, onCardClick }: Props) =>
   div(
     {
       className: styles.card,
       onclick: () => {
-        onClick();
+        onCardClick();
       },
     },
     ImageWithPlaceholder({
       src: movie.posterUrlPreview,
+      alt: 'Poster of the movie',
       className: styles.poster,
     }),
     div({
